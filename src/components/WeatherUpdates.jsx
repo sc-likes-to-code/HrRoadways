@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CloudRain, Sun, Cloud, AlertTriangle } from "lucide-react";
+import {CloudRain,Sun,Cloud,AlertTriangle,Snowflake,CloudLightning,CloudFog,CloudDrizzle,CloudMoon,CloudMoonRain,CloudRainWind,CloudSun,CloudSunRain} from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const WeatherUpdates = () => {
@@ -65,6 +65,9 @@ const WeatherUpdates = () => {
             temperature: data.main.temp,
             weather: data.weather[0].description,
             icon: data.weather[0].icon,
+            conditionId: data.weather[0].id,// Added: OpenWeatherMap condition code for detailed icon mapping
+            main: data.weather[0].main,// Added: Main weather group for icon logic
+            description: data.weather[0].description// Added: Detailed weather description for icon logic
           };
         })
       );
@@ -104,26 +107,45 @@ const WeatherUpdates = () => {
     }
   }, [updates]);
 
-  const getWeatherIcon = (icon) => {
-    switch (icon) {
-      case "01d":
-      case "01n":
-        return <Sun className="w-6 h-6 text-yellow-500" />;
-      case "02d":
-      case "02n":
-      case "03d":
-      case "03n":
-      case "04d":
-      case "04n":
-        return <Cloud className="w-6 h-6 text-gray-500" />;
-      case "09d":
-      case "09n":
-      case "10d":
-      case "10n":
-        return <CloudRain className="w-6 h-6 text-blue-500" />;
-      default:
-        return <AlertTriangle className="w-6 h-6 text-red-500" />;
+  // Maps OpenWeatherMap conditionId, main, and description to a specific weather icon
+  const getWeatherIcon = (conditionId, main, description) => {
+    // Thunderstorm with lightning
+    if (conditionId >= 200 && conditionId < 300) return <CloudLightning className="w-6 h-6 text-yellow-700" />;
+    // Drizzle
+    if (conditionId >= 300 && conditionId < 400) return <CloudDrizzle className="w-6 h-6 text-blue-400" />;
+    // Rain
+    if (conditionId >= 500 && conditionId < 600) {
+      if (description.includes("wind")) return <CloudRainWind className="w-6 h-6 text-blue-700" />;
+      return <CloudRain className="w-6 h-6 text-blue-500" />;
     }
+    // Snow
+    if (conditionId >= 600 && conditionId < 700) return <Snowflake className="w-6 h-6 text-blue-300" />;
+    // Fog, Mist, Haze, Smoke, Dust, Sand, Ash
+    if (
+      main === "Mist" ||
+      main === "Fog" ||
+      main === "Haze" ||
+      main === "Smoke" ||
+      main === "Dust" ||
+      main === "Sand" ||
+      main === "Ash"
+    ) return <CloudFog className="w-6 h-6 text-gray-400" />;
+    // Clear
+    if (conditionId === 800) return <Sun className="w-6 h-6 text-yellow-500" />;
+    // Clouds
+    if (conditionId === 801) return <CloudSun className="w-6 h-6 text-yellow-400" />;
+    if (conditionId === 802) return <Cloud className="w-6 h-6 text-gray-500" />;
+    if (conditionId === 803) return <Cloud className="w-6 h-6 text-gray-600" />;
+    if (conditionId === 804) return <Cloud className="w-6 h-6 text-gray-700" />;
+    // Night clouds
+    if (description.includes("night") || description.includes("moon")) {
+      if (description.includes("rain")) return <CloudMoonRain className="w-6 h-6 text-blue-400" />;
+      return <CloudMoon className="w-6 h-6 text-gray-400" />;
+    }
+    // Sun with rain
+    if (description.includes("rain") && description.includes("sun")) return <CloudSunRain className="w-6 h-6 text-yellow-400" />;
+    // Fallback
+    return <AlertTriangle className="w-6 h-6 text-red-500" />;
   };
 
   return (
@@ -175,7 +197,12 @@ const WeatherUpdates = () => {
                     shadow-md
                   `}
                     >
-                      {getWeatherIcon(update.cityWeather[0].icon)}
+                      {/* Render the dynamic weather icon based on real-time weather data */}
+                      {getWeatherIcon(
+                        update.cityWeather[0].conditionId,
+                        update.cityWeather[0].main,
+                        update.cityWeather[0].weather
+                      )} 
                     </div>
                     <div>
                       <h3 className="font-bold text-blue-900">
