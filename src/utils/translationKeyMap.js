@@ -1,6 +1,6 @@
 // Translation Key Mapping Utility
 // This helps developers find the right translation keys
-import { Facebook, Instagram, Linkedin, XIcon } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter  } from "lucide-react";
 
 export const translationKeyMap = {
   // Navigation keys
@@ -274,7 +274,7 @@ export const socialMediaLinks = [
     label: "Visit our Facebook Profile",
   },
   {
-    Icon: XIcon,
+    Icon: Twitter,
     color: "social-twitter",
     href: "https://x.com/TechwNishant",
     target: "_blank",
