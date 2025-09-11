@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "./Header";   // adjust path if needed
-import Footer from "./footer";   // adjust path if needed
+import Header from "./Header";  
+import Footer from "./footer";  
 
 const faqs = [
   {
@@ -40,7 +40,7 @@ const Faq = () => {
   return (
     <>
 
-      {/* ✅ Full-width section like homepage */}
+     
       <div className="w-full px-8 py-12 bg-white dark:bg-gray-900">
         <h1 className="text-3xl font-bold text-blue-900 dark:text-white mb-8 text-center">
           Frequently Asked Questions (FAQ)
@@ -58,7 +58,7 @@ const Faq = () => {
               >
                 {faq.question}
                 <span className="ml-2 text-blue-600">
-                  {openIndex === index ? "−" : "+"}
+                  {openIndex === index ? "−": "+"}
                 </span>
               </button>
               {openIndex === index && (
