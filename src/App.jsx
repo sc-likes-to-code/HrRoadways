@@ -49,7 +49,7 @@ const Login = lazy(() => import('./components/Login'));
 const MyBookings = lazy(() => import('./components/Userprofile'));
 const NotFound = lazy(() => import('./components/NotFound'));
 const ToastTest = lazy(() => import('./components/ToastTest'));
-const FaqPage = lazy(() => import('./components/FaqPage'));
+const FaqPage = lazy(() => import('./components/faq'));
 
 function BookingPageWrapper() {
 	const location = useLocation();
@@ -155,3 +155,4 @@ function App() {
 
 
 export default App;
+
