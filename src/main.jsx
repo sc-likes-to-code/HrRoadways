@@ -9,7 +9,7 @@ import "leaflet/dist/leaflet.css";
 
 // ✅ Newsletter global CSS (agar footer ke liye alag CSS file ho)
 import './styles/footer.css'; // ✅ Added for Newsletter
-
+ 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -74,4 +74,5 @@ root.render(
 //       });
 //   });
 // }
+
 
