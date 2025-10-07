@@ -9,7 +9,7 @@ export const translationKeyMap = {
     about: "nav.about",
     services: "nav.services",
     contact: "nav.contact",
-    trip: "nav.trip",
+    trip: "nav.trip",   
     track: "nav.track",
     blog: "nav.blog",
     donate: "nav.donate",
