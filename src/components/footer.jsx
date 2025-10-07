@@ -26,7 +26,7 @@ function Footer() {
     setSubscribed(true);
     setEmail("");
   };
-  
+   
   return (
     <footer className="footer w-full">
 
@@ -185,4 +185,5 @@ function Footer() {
 }
 
 export default Footer;
+
 
