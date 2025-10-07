@@ -6,7 +6,7 @@ import {
   Phone, 
   Mail, 
   CreditCard, 
-  Headphones, 
+  Headphones,
   AlertTriangle, 
   Lock, 
   Hammer,
@@ -396,3 +396,4 @@ const InfoPage = ({ initialLanguage = 'en' }) => {
 
 
 export default InfoPage;
+
