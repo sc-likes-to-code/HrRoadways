@@ -10,4 +10,4 @@ const { subscribeNewsletter } = require('../controllers/newsletterController');
 // Example endpoint: POST /api/newsletter/subscribe
 router.post('/subscribe', subscribeNewsletter);
 
-module.exports = router;
+module.exports = router; 
