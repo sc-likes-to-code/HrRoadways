@@ -80,7 +80,7 @@ function App() {
 								<Route path='/Available' element={<Available />} />
 								<Route path='/about' element={<AboutUs />} />
 								<Route path='/trip' element={<Trip />} />
-								<Route path='/faq' element={<Faq />} />{/* Added FAQ route */}
+								<Route path='/faq' element={<FaqPage />} />{/* Added FAQ route */}
 								<Route path='/bestrides' element={<BestRides />} />
 								<Route path='/policy' element={<InfoPage />} />
 								<Route path='/rules' element={<RulesAndGuidelines />} />
