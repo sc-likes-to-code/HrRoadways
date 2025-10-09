@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
 import { FaStar, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Loading from "./Loading";
