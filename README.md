@@ -31,13 +31,14 @@
 
 </div>
 
+
 ## Our Events - 
 <a href="https://www.elitecoders.xyz/events/1756104358418"><img src="https://github.com/user-attachments/assets/2e87bdb6-aa0d-42e6-a40c-fd00125d64c2"/></a>
 
 ## 📢 Weekly Shoutouts 🎉
 | Profile | Name | Profile | Name | Profile | Name | Profile | Name |
 |---------|------|---------|------|---------|------|---------|------|
-| <a href="https://github.com/Keshav1605"><img src="https://github.com/Keshav1605.png" width="80" /></a> | [**Keshav1605**](https://github.com/Keshav1605) | <a href="https://github.com/Soumyosish"><img src="https://github.com/Soumyosish.png" width="80" /></a> | [**Soumyosish**](https://github.com/Soumyosish) | <a href="https://github.com/anjaliitgit"><img src="https://github.com/anjaliitgit.png" width="80" /></a> | [**anjaliitgit**](https://github.com/anjaliitgit) | <a href="https://github.com/Aripilli-Bhavana"><img src="https://github.com/Aripilli-Bhavana.png" width="80" /></a> | [**Aripilli-Bhavana**](https://github.com/Aripilli-Bhavana) |
+| <a href="https://github.com/Keshav1605"><img src="https://github.com/Keshav1605.png" width="80" /></a> | [**Keshav1605**](https://github.com/Keshav1605) | <a href="https://github.com/Renu-code123"><img src="https://github.com/Renu-code123.png" width="80" /></a> | [**Soumyosish**](https://github.com/Renu-code123) | <a href="https://github.com/anushkasark08"><img src="https://github.com/anushkasark08.png" width="80" /></a> | [**anjaliitgit**](https://github.com/anushkasark08) | <a href="https://github.com/Aripilli-Bhavana"><img src="https://github.com/Aripilli-Bhavana.png" width="80" /></a> | [**Aripilli-Bhavana**](https://github.com/Aripilli-Bhavana) |
 
 
 
