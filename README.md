@@ -372,7 +372,10 @@ return (
 
 ---
 
-## ✨ Contributors
+## Contributor
+
+A heartfelt thank you to all the contributors who have dedicated their time and effort to make this project a success.  
+Your contributions—whether it’s code, design, testing, or documentation—are truly appreciated! 🚀
 
 #### Thanks to all the wonderful contributors 💖
 
@@ -380,6 +383,8 @@ return (
   <img src="https://contrib.rocks/image?repo=NishantRana07/HrRoadways" />
 </a>
 
+
+See full list of contribution from contributor [Contributor Graph](https://github.com/NishantRana07/HrRoadways/graphs/contributors)
 ---
 
 <div align="center">
