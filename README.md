@@ -1,58 +1,146 @@
-<h1 align="center">HrRoadways</h1>
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+  <h1 align="center">HrRoadways</h1>
+  
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 <p align="center">
   <img src="https://img.shields.io/badge/BUILD-grey?style=for-the-badge" />
   <img src="https://img.shields.io/badge/PASSING-brightgreen?style=for-the-badge" />
   <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=for-the-badge" />
 </p>
 
+<div align="center"><p><a href="https://github.com/NishantRana07/HrRoadways/issues"><strong>Report a Bug • </strong></a>
+<a href="https://github.com/NishantRana07/HrRoadways/issues"><strong>Request a Feature</strong></a></p>
+</div>
+
 <h4 align="center">
   HrRoadways is a comprehensive project designed to provide users with an intuitive platform to check bus routes, timings, and real-time updates for government bus services.
 </h4>
 <h2 align="center">
-  <a href="https://hrroadways.vercel.app/" target="_blank" rel="noopener noreferrer">Live Link</a>
+  <a href="https://hrroadways.vercel.app/" target="_blank" rel="noopener noreferrer">🌐 Live Demo</a>
 </h2>
 
-## Tech Stack
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-- React with Vite Framework
-- i18next for internationalization
-- React Router for navigation
-- Tailwind CSS for styling
-- Framer Motion for animations
+## 🌟 Vision
 
-## National Language Support
+Make public bus info simple, reliable, and accessible to everyone — across languages and devices. HrRoadways aims to reduce travel friction by surfacing accurate routes, schedules, and live updates in a lightweight, easy-to-use web app.
 
-HrRoadways supports **13 Indian languages** to serve users across India:
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-- **English** (en)
-- **Hindi** (hi) - हिन्दी
-- **Bengali** (bn) - বাংলা
-- **Telugu** (te) - తెలుగు
-- **Marathi** (mr) - मराठी
-- **Tamil** (ta) - தமிழ்
-- **Gujarati** (gu) - ગુજરાતી
-- **Kannada** (kn) - ಕನ್ನಡ
-- **Malayalam** (ml) - മലയാളം
-- **Punjabi** (pa) - ਪੰਜਾਬੀ
-- **Oriya/Odia** (or) - ଓଡ଼ିଆ
-- **Assamese** (as) - অসমীয়া
-- **Urdu** (ur) - اردو
+## 🎯 Mission
 
-### Language Features
+Provide an inclusive, multilingual platform that:
+- Lets users quickly find bus routes, stops, and timings.
+- Delivers real-time status and useful alerts.
+- Enables community contributions for better local coverage.
+- Keeps privacy, performance, and accessibility as first-class concerns.
 
-- Automatic language detection based on browser settings
-- Language preference saved in localStorage
-- Dynamic language switching without page reload
-- Complete translation coverage for all UI elements
-- Responsive design maintained across all languages
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+## Why HrRoadways?
 
-### For Developers
+HrRoadways solves everyday transit friction by making government bus information easy to find, understand, and use.
 
-The project uses `react-i18next` for internationalization. Translation files are located in `src/i18n/locales/`. To add new translations:
+- Problem solved: consolidates routes, timings, and live updates into one lightweight web app so commuters don’t need multiple sources.
+- Multilingual by design: supports 13 Indian languages to serve diverse users across regions.
+- Lightweight & fast: built with React + Vite and optimized for low bandwidth and mobile devices.
+- Reliable data focus: integrates authoritative route/schedule sources and simple JSON-backed datasets for quick iteration.
+- Accessibility & inclusivity: semantic UI, keyboard navigation, and language-first UX reduce barriers for all users.
+- Community-driven: contributors can add places, translations, and local corrections to improve coverage.
+- Privacy-conscious: no unnecessary tracking; minimal data collection with clear retention practices.
+- Production-ready: easy to deploy, monitor, and scale with standard tooling (CI, hosting, backups).
 
-1. Update the appropriate language file in `src/i18n/locales/`
-2. Use the `useTranslation` hook in components: `const { t } = useTranslation();`
+ <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## Project Flowchart
+<img width="1125" height="760" alt="Untitled diagram-2025-10-11-075010" src="https://github.com/user-attachments/assets/5a406a55-d242-4b7f-9aec-de0b0194a896" />
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+ 
+## ⚙️ Tech Stack
+
+<div align="center">
+
+| Technology    | Purpose                                   |
+|---------------|--------------------------------------------|
+| React + Vite  | Frontend framework & build tooling         |
+| React Router  | Client-side routing                        |
+| i18next       | Internationalization                       |
+| Tailwind CSS  | Utility-first styling                      |
+| Framer Motion | Smooth, production-ready animations        |
+
+</div>
+
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+## Our Events - 
+<a href="https://www.elitecoders.xyz/events/1756104358418"><img src="https://github.com/user-attachments/assets/2e87bdb6-aa0d-42e6-a40c-fd00125d64c2"/></a>
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+## 📢 Weekly Shoutouts 🎉
+| Profile | Name | Profile | Name | Profile | Name | Profile | Name |
+|---------|------|---------|------|---------|------|---------|------|
+| <a href="https://github.com/Keshav1605"><img src="https://github.com/Keshav1605.png" width="80" /></a> | [**Keshav1605**](https://github.com/Keshav1605) | <a href="https://github.com/Renu-code123"><img src="https://github.com/Renu-code123.png" width="80" /></a> | [**Soumyosish**](https://github.com/Renu-code123) | <a href="https://github.com/anushkasark08"><img src="https://github.com/anushkasark08.png" width="80" /></a> | [**anjaliitgit**](https://github.com/anushkasark08) | <a href="https://github.com/Aripilli-Bhavana"><img src="https://github.com/Aripilli-Bhavana.png" width="80" /></a> | [**Aripilli-Bhavana**](https://github.com/Aripilli-Bhavana) |
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+<h2 align="center">🌏 National Language Support</h2>
+
+<p align="center">HrRoadways supports <b>13 Indian languages</b> to serve users across India 🇮🇳</p>
+
+<div align="center">
+
+| Language  | Code | Native Name   |
+|-----------|------|---------------|
+| English   | en   | English       |
+| Hindi     | hi   | हिन्दी        |
+| Bengali   | bn   | বাংলা         |
+| Telugu    | te   | తెలుగు        |
+| Marathi   | mr   | मराठी         |
+| Tamil     | ta   | தமிழ்         |
+| Gujarati  | gu   | ગુજરાતી      |
+| Kannada   | kn   | ಕನ್ನಡ         |
+| Malayalam | ml   | മലയാളം       |
+| Punjabi   | pa   | ਪੰਜਾਬੀ       |
+| Oriya     | or   | ଓଡ଼ିଆ        |
+| Assamese  | as   | অসমীয়া       |
+| Urdu      | ur   | اردو          |
+
+</div>
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+<h2 align="center">📝 Language Features</h2>
+
+<div align="center">
+
+| Feature | Description |
+|---------|-------------|
+| 🔤 Unicode Support | Handles multilingual text seamlessly |
+| 🌐 Localization | Supports 13 Indian languages for wider reach |
+| 🗂️ Language Files | Each language stored in separate JSON for scalability |
+| ⚡ Fast Switching | Toggle between languages instantly |
+| 🛠️ Easy Maintenance | Simple structure for adding new languages |
+
+</div>
+
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+<h2 align="center">⚡ For Developers</h2>
+
+### Internationalization (i18n)
+The project uses `react-i18next` for translations. Files are in `src/i18n/locales/`.  
+To add new translations:
+1. Update the appropriate file in `src/i18n/locales/`
+2. Use the `useTranslation` hook: `const { t } = useTranslation();`
 3. Reference translations with: `{t('key.subkey')}`
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## File Structure
 
@@ -66,6 +154,8 @@ HrRoadways/
 </pre>
 
 - Json Database hosting link - https://jsonblob.com/api/jsonBlob/1333092652136194048
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## Getting Started
 
@@ -90,10 +180,15 @@ HrRoadways/
   A centralized repository to store and manage information about popular places across various locations.
 </h4>
 
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ## Format for Adding Popular Places
 
 To add popular places to the repository, follow the format specified below:
 
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
 ### File Structure
 
 <pre>
@@ -147,9 +242,10 @@ Here is an example of how to add a location:
 }
 ```
 
-<h1 align="center">Contributing Guidelines</h1>
+````markdown
+<h1 align="center">Contributing & Translation Guidelines</h1>
 <h4 align="center">
-  Guidelines for contributing to the repository, including adding content and ensuring Hindi translations.
+  Guidelines for contributing to the repository, ensuring Hindi translations, and keeping the codebase updated.
 </h4>
 
 ## Contributing
@@ -163,14 +259,12 @@ If you are adding content to the site or creating new pages, please:
 ### Steps for Contributing
 
 #### 1. Fork the Repository:
-
-Click on the "Fork" button at the top right of the repository page.
+Click on the **Fork** button at the top right of the repository page.
 
 #### 2. Clone the Forked Repository:
-
 ```bash
 git clone https://github.com/your-username/HrRoadways.git
-```
+````
 
 #### 3. Create a New Branch:
 
@@ -180,10 +274,8 @@ git checkout -b your-branch-name
 
 #### 4. Make Your Changes:
 
-Ensure that you:
-
-- Apply the logic for Hindi translation.
-- Compress images before uploading.
+* Apply the Hindi translation logic.
+* Compress images before uploading.
 
 #### 5. Commit Your Changes:
 
@@ -200,13 +292,15 @@ git push origin your-branch-name
 
 #### 7. Create a Pull Request:
 
-Go to the original repository and click on "New Pull Request."
+Go to the original repository and click **New Pull Request**.
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## Keeping Your Fork Updated
 
 Before making a pull request, ensure that your forked repository is up to date.
 
-#### Add Remote Upstream Repository:
+#### Add Remote Upstream:
 
 ```bash
 git remote add upstream https://github.com/NishantRana07/HrRoadways.git
@@ -218,7 +312,7 @@ git remote add upstream https://github.com/NishantRana07/HrRoadways.git
 git fetch upstream
 ```
 
-#### Merge Upstream Changes:
+#### Merge Changes into Main:
 
 ```bash
 git checkout main
@@ -231,250 +325,136 @@ git merge upstream/main
 git push origin main
 ```
 
-By following these steps, you ensure that your pull request is based on the latest code.
+By following these steps, your pull request will be based on the latest code.
 
-<h1 align="center">Contributing and Translation Guidelines</h1>
-<h4 align="center">
-  Comprehensive guidelines for contributing to the repository and implementing bilingual functionality.
-</h4>
-
-## Contributing
-
-If you are adding content to the site or creating new pages, please:
-
-- Apply logic for Hindi translation and add translations for all words.
-- Use PNG or JPG files for minimal size and always compress images.
-- Ensure that your forked repository is up to date before submitting a pull request.
-
-### Steps for Contributing
-
-#### 1. Fork the Repository:
-
-Click on the "Fork" button at the top right of the repository page.
-
-#### 2. Clone the Forked Repository:
-
-```bash
-git clone https://github.com/your-username/HrRoadways.git
-```
-
-#### 3. Create a New Branch:
-
-```bash
-git checkout -b your-branch-name
-```
-
-#### 4. Make Your Changes:
-
-Ensure that you:
-
-- Apply the logic for Hindi translation.
-- Compress images before uploading.
-
-#### 5. Commit Your Changes:
-
-```bash
-git add .
-git commit -m "Describe your changes"
-```
-
-#### 6. Push to the Branch:
-
-```bash
-git push origin your-branch-name
-```
-
-#### 7. Create a Pull Request:
-
-Go to the original repository and click on "New Pull Request."
-
-## Keeping Your Fork Updated
-
-Before making a pull request, ensure that your forked repository is up to date.
-
-#### Add Remote Upstream Repository:
-
-```bash
-git remote add upstream https://github.com/NishantRana07/HrRoadways.git
-```
-
-#### Fetch Upstream Changes:
-
-```bash
-git fetch upstream
-```
-
-#### Merge Upstream Changes:
-
-```bash
-git checkout main
-git merge upstream/main
-```
-
-#### Push Changes to Your Fork:
-
-```bash
-git push origin main
-```
-
-By following these steps, you ensure that your pull request is based on the latest code.
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## Translation Documentation
 
 ### Overview
 
-The HrRoadways project supports bilingual functionality, allowing users to switch between English and Hindi. This is achieved through a translation logic that provides translated text for various components.
+The HrRoadways project supports bilingual functionality (English & Hindi). This is achieved through translation logic built into components.
 
-### Translation Logic Implementation
+### Implementation
 
 #### Translation Data Structure:
 
-The translation data is organized in a structured format within the components. Each language has its own set of translations for different text elements.
-
-#### State Management:
-
-A state variable (`isHindi`) is used to toggle between English and Hindi translations.
-
-#### Language Toggle Function:
-
-A function (`handleToggleLanguage`) is provided to switch between languages.
-
-### Adding Translations
-
-#### Define Translations:
-
-Add the translations for both English and Hindi in the respective component.
-
-#### Use the Translation:
-
-Use the translation logic to display the translated text based on the current language state.
-
-#### Example: Adding Translations to a New Component
-
-##### Define Translations:
+Each component maintains translations for both languages:
 
 ```javascript
 const translations = {
-  en: {
-    heading: "Your English Heading",
-    description: "Your English Description",
-  },
-  hi: {
-    heading: "आपका हिंदी शीर्षक",
-    description: "आपका हिंदी विवरण",
-  },
+  en: { heading: "Your English Heading" },
+  hi: { heading: "आपका हिंदी शीर्षक" },
 };
 ```
 
-##### Use the Translation:
+#### State Management:
 
-```javascript
-const currentLanguage = isHindi ? translations.hi : translations.en;
-
-return (
-  <div>
-    <h1>{currentLanguage.heading}</h1>
-    <p>{currentLanguage.description}</p>
-  </div>
-);
-```
-
-### Example: Existing Components
-
-#### App.jsx
-
-The `App.jsx` file manages the routing and includes the language toggle functionality.
-
-##### State Management and Toggle Function:
+A state variable (`isHindi`) toggles between languages.
 
 ```javascript
 const [isHindi, setIsHindi] = useState(false);
-
-const handleToggleLanguage = () => setIsHindi(!isHindi);
-
-return (
-  <Router>
-    <Navigation isHindi={isHindi} onToggleLanguage={handleToggleLanguage} />
-    <Routes>
-      <Route path="/" element={<Hero isHindi={isHindi} />} />
-      {/* Other routes */}
-    </Routes>
-    <Footer isHindi={isHindi} />
-  </Router>
-);
+const currentLanguage = isHindi ? translations.hi : translations.en;
 ```
 
-##### Passing Translation State:
+#### Toggle Function:
 
-The `isHindi` state is passed to components that require translations, such as `Hero` and `Footer`.
+```javascript
+const handleToggleLanguage = () => setIsHindi(!isHindi);
+```
 
-#### Hero.jsx
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-The `Hero` component uses the translation logic to display content in the selected language.
+### Adding Translations to New Components
 
-##### Define Translations:
+1. **Define Translations:**
+
+   ```javascript
+   const translations = {
+     en: { description: "Your English Description" },
+     hi: { description: "आपका हिंदी विवरण" },
+   };
+   ```
+
+2. **Use the Translations:**
+
+   ```javascript
+   <p>{currentLanguage.description}</p>
+   ```
+
+---
+
+### Example: Hero.jsx
 
 ```javascript
 const translations = {
   en: {
     heading: "Haryana Roadways - Your Own Bus Service",
-    subheading: "Your Journey, Our Pride | आपकी यात्रा, हमारा गौरव",
-    departure: "From",
-    arrival: "To",
     button: "Search Buses",
-    popular: "Popular Routes",
-    allBuses: "All Buses",
-    volvo: "Volvo AC",
-    superExpress: "Super Express",
-    ordinary: "Ordinary",
-    searchPlaceholder: "Search bus stands...",
   },
   hi: {
     heading: "हरियाणा रोडवेज - आपकी अपनी बस सेवा",
-    subheading: "आपकी यात्रा, हमारा गौरव",
-    departure: "कहाँ से",
-    arrival: "कहाँ तक",
     button: "बसें खोजें",
-    popular: "लोकप्रिय मार्ग",
-    allBuses: "सभी बसें",
-    volvo: "वोल्वो एसी",
-    superExpress: "सुपर एक्सप्रेस",
-    ordinary: "साधारण",
-    searchPlaceholder: "बस स्टैंड खोजें...",
   },
 };
-```
 
-##### Use Translations:
-
-```javascript
 const currentLanguage = isHindi ? translations.hi : translations.en;
 
 return (
   <div>
     <h1>{currentLanguage.heading}</h1>
-    <p>{currentLanguage.subheading}</p>
-    {/* Other translated elements */}
+    <button>{currentLanguage.button}</button>
   </div>
 );
 ```
 
-### Best Practices
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+## Screenshots
+<img width="1910" height="828" alt="Screenshot 2025-10-11 131213" src="https://github.com/user-attachments/assets/b286a143-c5db-45d5-88ce-de7a83ce0f80" />
 
-#### Apply Translation Logic:
+<img width="1711" height="718" alt="Screenshot 2025-10-11 131235" src="https://github.com/user-attachments/assets/4361b2e0-1e8a-45d9-bbe0-11c046c967a6" />
 
-Ensure that all new content and pages implement the translation logic.
+ <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+ 
+## 🐞 Troubleshooting 
 
-#### Compress Images:
+App won't start (dev)
+- Check Node version (use Node 16+).
+- Run npm install in repo root (or frontend folder if separated).
+- Ensure dev server port not in use. Kill conflicting process or change port.
+- Missing translations or UI shows keys
 
-Use PNG or JPG files for images and always compress them to minimize size.
+- Confirm locale JSON files exist under src/i18n/locales/.
+- Restart dev server after adding new keys.
+- Use useTranslation() properly and call t('namespace.key').
+- Data not loading (API/DB)
+- Verify the JSON/DB endpoint is reachable (check CORS).
+- If using a hosted JSON blob, ensure the URL is correct and public.
+- Inspect browser console / network tab for 4xx/5xx responses.
+- Images fail to upload or display
+- Confirm storage URL/CORS settings.
+- Check file size limits and client-side compression.
+- Language switch not persisting
 
-#### Update Forked Repo:
+- Make sure selected language is saved to localStorage or user profile.
+- Ensure state is read on app init before rendering locale-dependent components.
+- Build/Production issues
+- Verify environment variables for production (API base URL, any keys).
+- Run a local production build (npm run build) and serve the dist to reproduce.
 
-Before submitting a pull request, always ensure that your forked repository is up to date.
+ <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+ 
+## Best Practices
 
-### Summary
+* **Always apply translation logic** for new content/pages.
+* **Use PNG/JPG** files and compress images before uploading.
+* **Keep your fork updated** before submitting PRs.
 
-By following this documentation, developers can effectively add and manage translations in the HrRoadways project. This ensures a consistent bilingual experience for users.
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+<div align="center">
 
-If you have any questions or need further assistance, feel free to reach out to the project maintainers.
+[🔼 Back to Top](#-hrroadways)
+
+</div>

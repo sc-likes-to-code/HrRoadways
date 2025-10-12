@@ -16,6 +16,7 @@ const BlogPage = ({ isHindi }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [savedPosts, setSavedPosts] = useState(new Set());
+  const [likedPosts, setLikedPosts] = useState(new Set());
   const [sortBy, setSortBy] = useState('latest');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -91,9 +92,15 @@ const BlogPage = ({ isHindi }) => {
   }, []);
 
   const handleLike = useCallback((postId) => {
-    setPosts(prev =>
-      prev.map(post => post.id === postId ? { ...post, likes: post.likes + 1 } : post)
-    );
+    setLikedPosts(prev => {
+      if (prev.has(postId)) return prev; // Already liked, do nothing
+      setPosts(posts =>
+        posts.map(post => post.id === postId ? { ...post, likes: post.likes + 1 } : post)
+      );
+      const newSet = new Set(prev);
+      newSet.add(postId);
+      return newSet;
+    });
   }, []);
 
   const filteredPosts = React.useMemo(() => {
@@ -118,7 +125,7 @@ const BlogPage = ({ isHindi }) => {
 
   if (error && !currentLanguage) {
     return (
-      <div className="blog-page-container">
+      <div className="blog-page-container dark:bg-gray-950 dark:text-white">
         <div className="error-message">
           <h2>Error loading content</h2>
           <p>{error}</p>
@@ -131,7 +138,7 @@ const BlogPage = ({ isHindi }) => {
   if (loading || !currentLanguage) return <Loading />;
 
   return (
-    <div className="blog-page-container text-black">
+    <div className="blog-page-container text-black dark:bg-gray-950 dark:text-white">
       {/* Header */}
       <header className="blog-header">
         <div className="header-content">
@@ -152,12 +159,12 @@ const BlogPage = ({ isHindi }) => {
         </div>
       </header>
 
-      <main className="main-content">
-        <div className="content-container">
+      <main className="main-content ">
+        <div className="content-container dark:bg-gray-950 dark:text-white">
           {/* Left Content */}
           <div className="main-content-left">
             {/* Filters */}
-            <div className="search-filters">
+            <div className="search-filters dark:bg-gray-900 darl:text-white">
               <div className="search-bar">
                 <div className="search-input-container">
                   <Search className="search-icon" size={20} />
@@ -201,7 +208,7 @@ const BlogPage = ({ isHindi }) => {
               ) : (
                 filteredPosts.map(post => (
                   <article key={post.id} className="blog-post">
-                    <div className="post-content">
+                    <div className="post-content dark:bg-gray-900 darl:text-white">
                       <div className="post-meta">
                         <span className="post-meta-item"><Calendar size={16} /> {post.date}</span>
                         <span className="post-meta-item"><Clock size={16} /> {post.readTime}</span>
@@ -221,7 +228,11 @@ const BlogPage = ({ isHindi }) => {
 
                       <div className="post-actions">
                         <div className="post-actions-left">
-                          <button onClick={() => handleLike(post.id)} className="post-action-button">
+                          <button
+                            onClick={() => handleLike(post.id)}
+                            className="post-action-button"
+                            disabled={likedPosts.has(post.id)}
+                          >
                             <ThumbsUp size={18} /> {post.likes}
                           </button>
                           <button className="post-action-button">

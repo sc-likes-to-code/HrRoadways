@@ -29,7 +29,7 @@ function ScrollButton() {
                 position: 'fixed',
                 bottom: '22px',
                 right: '22px',
-                backgroundColor: '#007bff',
+                backgroundColor: '#161b33',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '50%',
@@ -47,8 +47,7 @@ function ScrollButton() {
 
             aria-label="Go to top"
             >
-             ↑
-
+            <i class="fa-solid fa-arrow-up"></i>
             </button>
         )
     );

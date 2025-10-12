@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { MapPin, Star, Moon, Eye } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { MapPin, Star, Moon } from "lucide-react";
 import SidebarFilter from "./SidebarFilter";
+import { useSearchParams } from "react-router-dom";
 
 const defaultLanguage = {
   filters: "Filters",
@@ -22,7 +23,7 @@ const hotels = [
       "Sector 20, MAIT Complex, Near Railway Station, Kurukshetra, Haryana 136118",
     priceRange: [1900, 2300],
     rating: 4.2,
-    numberOfReviews: 320, // ADDED: numberOfReviews for popularity logic
+    numberOfReviews: 320,
     type: "Premium",
     facilities: ["Free Wifi", "Parking", "Restaurant", "Room Service"],
     image: "https://r1imghtlak.mmtcdn.com/09c7c7e648bf11ea81fd0242ac110002.jpg",
@@ -36,7 +37,7 @@ const hotels = [
       "Plot No. 45, Sector 12, Industrial Area, Kurukshetra, Haryana 136118",
     priceRange: [1400, 1800],
     rating: 3.8,
-    numberOfReviews: 180, // ADDED: numberOfReviews
+    numberOfReviews: 180,
     type: "Budget",
     facilities: ["Free Wifi", "AC", "Elevator", "24/7 Front Desk"],
     image:
@@ -50,7 +51,7 @@ const hotels = [
     address: "Main Road, Near Bus Stand, Kurukshetra, Haryana 136118",
     priceRange: [2500, 3000],
     rating: 4.4,
-    numberOfReviews: 450, // ADDED: numberOfReviews
+    numberOfReviews: 450,
     type: "Luxury",
     facilities: ["Free Wifi", "Swimming Pool", "Spa", "Restaurant"],
     image:
@@ -64,7 +65,7 @@ const hotels = [
     address: "Civil Lines, Near Railway Station, Kurukshetra, Haryana 136118",
     priceRange: [2800, 3500],
     rating: 4.5,
-    numberOfReviews: 510, // ADDED: numberOfReviews
+    numberOfReviews: 510,
     type: "Luxury",
     facilities: ["Free Wifi", "Gym", "Restaurant", "Business Center"],
     image:
@@ -78,7 +79,7 @@ const hotels = [
     address: "Near Police Station, Main Market, Kurukshetra, Haryana 136118",
     priceRange: [1700, 2000],
     rating: 3.9,
-    numberOfReviews: 250, // ADDED: numberOfReviews
+    numberOfReviews: 250,
     type: "Budget",
     facilities: ["Free Wifi", "Restaurant", "Parking", "Room Service"],
     image:
@@ -87,6 +88,7 @@ const hotels = [
   },
 ];
 
+// Hotel Card Component
 const HotelCard = ({ hotel, currentLanguage }) => {
   const getTypeColorClasses = (type) => {
     switch (type.toLowerCase()) {
@@ -106,8 +108,15 @@ const HotelCard = ({ hotel, currentLanguage }) => {
   };
 
   return (
-    <div className="bg-white  overflow-hidden border-b border-gray-200 mb-4">
-      <div className="flex">
+ <div
+  className="bg-white overflow-hidden border border-gray-200 mb-4 rounded-xl 
+  shadow-sm hover:shadow-xl hover:scale-[1.02] hover:border-blue-400 
+  transition-all duration-500 ease-in-out cursor-pointer
+  hover:-translate-y-1 dark:bg-gray-900 dark:text-white dark:border-none"
+>
+
+
+      <div className="flex dark:bg-gray-900 dark:text-white">
         <div className="relative w-64 h-56 flex-shrink-0">
           <img
             src={hotel.image}
@@ -120,7 +129,7 @@ const HotelCard = ({ hotel, currentLanguage }) => {
           <div>
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">
+                <h3 className="text-xl font-bold text-gray-900 mb-1 dark:text-white">
                   {hotel.name}
                 </h3>
                 <div className="flex items-center gap-3 mb-2">
@@ -137,7 +146,7 @@ const HotelCard = ({ hotel, currentLanguage }) => {
                       {hotel.rating}
                     </span>
                     <span className="text-sm text-gray-500">
-                      ({hotel.numberOfReviews} reviews) {/* CHANGED: Use hotel.numberOfReviews */}
+                      ({hotel.numberOfReviews} reviews)
                     </span>
                   </div>
                 </div>
@@ -195,7 +204,7 @@ const HotelCard = ({ hotel, currentLanguage }) => {
   );
 };
 
-// Keep the component name as Trip as requested
+// Trip Component (full)
 const Trip = ({ isHindi = false }) => {
   const [currentLanguage] = useState(defaultLanguage);
   const [filters, setFilters] = useState({
@@ -204,6 +213,38 @@ const Trip = ({ isHindi = false }) => {
     hotelTypes: [],
   });
   const [sortBy, setSortBy] = useState("popularity");
+
+  // Form state for From → To search
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [busType, setBusType] = useState("");
+
+  // React Router search params
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // On page load, read query params and auto-fill
+  useEffect(() => {
+    const fromParam = searchParams.get("from") || "";
+    const toParam = searchParams.get("to") || "";
+    const busTypeParam = searchParams.get("busType") || "";
+
+    setFrom(fromParam);
+    setTo(toParam);
+    setBusType(busTypeParam);
+
+    if (fromParam && toParam) {
+      handleSearch(); // Trigger search on load
+    }
+  }, []);
+
+  // Search function for URL sync
+  const handleSearch = () => {
+    setSearchParams({
+      from,
+      to,
+      busType,
+    });
+  };
 
   const handleFilterChange = (type, value) => {
     setFilters((prev) => ({ ...prev, [type]: value }));
@@ -240,21 +281,27 @@ const Trip = ({ isHindi = false }) => {
       case "rating":
         return b.rating - a.rating;
       case "popularity":
-        // FIXED LOGIC for popularity: Sort by numberOfReviews (desc), then by rating (desc) as tie-breaker
         if (b.numberOfReviews !== a.numberOfReviews) {
           return b.numberOfReviews - a.numberOfReviews;
         }
-        return b.rating - a.rating; // Tie-breaker for same number of reviews
+        return b.rating - a.rating;
       default:
-        // Default case for sortBy, e.g., if 'popularity' is not selected, fallback to rating
         return b.rating - a.rating;
     }
   });
 
+  // Share button function
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert("Link copied to clipboard!"))
+      .catch(() => alert("Failed to copy link."));
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex h-screen">
-        <div className="w-80 bg-white border-r border-gray-200 flex-shrink-0 overflow-y-auto shadow-lg">
+        {/* Sidebar Filters */}
+        <div className="w-80 bg-white border-r border-gray-200 flex-shrink-0 overflow-y-auto shadow-lg dark:bg-gray-950 dark:text-white">
           <div className="p-6">
             <SidebarFilter
               filters={filters}
@@ -265,10 +312,51 @@ const Trip = ({ isHindi = false }) => {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto bg-white border border-gray-100 m- ml-0">
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto bg-white border border-gray-100 m- ml-0 dark:bg-gray-950 dark:text-white">
           <div className="p-6">
-            <div className="flex items-center justify-between bg-gradient-to-r pb-4 bg-white overflow-hidden border-b border-gray-200 mb-4">
-              <div className="flex items-center gap-3">
+            {/* Search Form */}
+            <div className="flex flex-col md:flex-row gap-4 mb-4">
+              <input
+                type="text"
+                placeholder="From"
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+                className="border px-4 py-2 rounded flex-1"
+              />
+              <input
+                type="text"
+                placeholder="To"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                className="border px-4 py-2 rounded flex-1"
+              />
+              <select
+                value={busType}
+                onChange={(e) => setBusType(e.target.value)}
+                className="border px-4 py-2 rounded"
+              >
+                <option value="">All Types</option>
+                <option value="AC">AC</option>
+                <option value="Non-AC">Non-AC</option>
+              </select>
+              <button
+                onClick={handleSearch}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              >
+                Search
+              </button>
+              <button
+                onClick={handleShare}
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              >
+                Share
+              </button>
+            </div>
+
+            {/* Header with Sorting */}
+            <div className="flex items-center justify-between bg-gradient-to-r pb-4 bg-white overflow-hidden border-b border-gray-200 mb-4 dark:bg-gray-950 dark:text-white">
+              <div className="flex items-center gap-3 ">
                 <h2 className="text-2xl font-bold text-gray-900 ">
                   {sortedHotels.length} Hotels in paharganj
                 </h2>
@@ -291,8 +379,9 @@ const Trip = ({ isHindi = false }) => {
                 </div>
               </div>
             </div>
-            {/* THIS IS THE CORRECTED SECTION */}
-            <div className="space-y-1"> {/* This div was present in the original correct code block */}
+
+            {/* Hotel Cards */}
+            <div className="space-y-1">
               {sortedHotels.length > 0 ? (
                 sortedHotels.map((hotel) => (
                   <HotelCard
@@ -302,7 +391,7 @@ const Trip = ({ isHindi = false }) => {
                   />
                 ))
               ) : (
-                <div className="text-center py-16 bg-gradient-to-b from-gray-50 to-white rounded-2xl border border-gray-200">
+                <div className="text-center py-16 bg-gradient-to-b from-gray-50 to-white rounded-2xl border border-gray-200 dark:bg-gray-950 dark:text-white">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto flex items-center justify-center">
                       <Star className="w-8 h-8 text-gray-400" />
@@ -324,6 +413,4 @@ const Trip = ({ isHindi = false }) => {
   );
 };
 
-// No export statement added, as requested.
-// export default Trip; // Moved export to the very end as it was in your original snippet
 export default Trip;

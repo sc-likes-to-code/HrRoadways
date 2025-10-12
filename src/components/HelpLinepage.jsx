@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Phone, Mail, Clock, MessageCircle, Search } from 'lucide-react';
+import '../styles/HelpLinepage.css'
 
 const HelplinePage = ({ isHindi }) => {
   const translations = {
@@ -45,7 +46,7 @@ const HelplinePage = ({ isHindi }) => {
           answer: 'Yes, you can modify your booking up to 6 hours before departure through the "Modify Booking" option or by contacting our support team.',
         },
       ],
-      quickContact: 'Need more help? We\'re here for you!',
+      quickContact: 'Need more help? We are here for you!',
       copyright: '© 2025 Haryana Roadways Service. All rights reserved.',
     },
     hi: {
@@ -111,7 +112,7 @@ const HelplinePage = ({ isHindi }) => {
   );
 
   return (
-    <div className="font-sans bg-gray-50 text-gray-800 min-h-screen">
+    <div className="font-sans bg-gray-50 text-gray-800 min-h-screen dark:bg-gray-950 dark:text-white">
       <header className="bg-blue-900 text-white py-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/api/placeholder/1920/400')] opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 relative">
@@ -259,54 +260,14 @@ const HelplinePage = ({ isHindi }) => {
 
       <footer className="bg-blue-900 text-white py-8 mt-12 shadow-2xl">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-lg mb-4 animate-float">
+          <p className="text-lg mb-4 three-d-text" >
             {currentLanguage.quickContact}
           </p>
           <p className="text-sm opacity-75 hover:opacity-100 transition-opacity duration-300">
-            {currentLanguage.copyright}
+            {currentLanguage.copyright} 
           </p>
         </div>
       </footer>
-
-      <style>{`
-        @keyframes fade-in-up {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-        }
-        .underline-effect {
-          position: relative;
-          &:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: currentColor;
-            transition: width 0.3s ease;
-          }
-          &:hover:after {
-            width: 100%;
-          }
-        }
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 3s ease-in-out infinite;
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };

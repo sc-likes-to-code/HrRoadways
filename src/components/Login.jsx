@@ -2,6 +2,7 @@ import React from "react";
 import { SignIn } from "@clerk/clerk-react";
 import { useModalStore } from "../store/store";
 import { useTranslation } from "react-i18next";
+import { toast } from 'react-toastify';
 
 function Login() {
   const { modalType, openModal, closeModal } = useModalStore();
@@ -10,7 +11,7 @@ function Login() {
   if (modalType !== "login") return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 dark:bg-gray-950 dark:text-white">
       <div className="relative">
         <button
           onClick={closeModal}
@@ -20,7 +21,7 @@ function Login() {
         </button>
         <div className="flex items-center justify-center">
           <SignIn 
-            afterSignInUrl="/dashboard"
+            afterSignInUrl="/mybookings?login=success"
             routing="virtual"
             appearance={{
               elements: {
@@ -35,21 +36,7 @@ function Login() {
                 socialButtonsPlacement: 'top'
               }
             }}
-            onSignIn={() => closeModal()}
           />
-        </div>
-        
-        {/* Custom Sign Up Link */}
-        <div className="text-center mt-4 p-4 border-t border-gray-200">
-          <p className="text-gray-600 text-sm">
-            Don't have an account?{' '}
-            <button
-              onClick={() => openModal('signup')}
-              className="text-green-600 hover:text-green-700 font-medium hover:underline"
-            >
-              Sign Up Here
-            </button>
-          </p>
         </div>
       </div>
     </div>
