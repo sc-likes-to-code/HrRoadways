@@ -162,6 +162,7 @@ const Navigation = () => {
               </button>
             </div>
         </div>
+    </div>
       </nav>
 
       {/* Mobile Sidebar */}

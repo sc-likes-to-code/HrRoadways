@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Bus, MapPin, Clock, Globe, Share } from "lucide-react";
+import { Bus, MapPin, Clock, Globe, Share, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import "../styles/footer.css";
 import { socialMediaLinks } from "../utils/translationKeyMap";
+
 function Footer() {
   const { t } = useTranslation();
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [email, setEmail] = useState("");
+  const [subscriptionStatus, setSubscriptionStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -15,9 +19,48 @@ function Footer() {
     return () => clearInterval(timeInterval);
   }, []);
 
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email) {
+      setSubscriptionStatus(t("newsletter.enterEmail"));
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setSubscriptionStatus(t("newsletter.invalidEmail"));
+      return;
+    }
+
+    setIsLoading(true);
+    setSubscriptionStatus("");
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubscriptionStatus(t("newsletter.success"));
+        setEmail("");
+      } else {
+        setSubscriptionStatus(data.message || t("newsletter.error"));
+      }
+    } catch (error) {
+      setSubscriptionStatus(t("newsletter.error"));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="footer w-full">
-
       <div className="footer-bg-overlay" />
       <div className="footer-time">
         <div className="footer-time-content">
@@ -70,6 +113,46 @@ function Footer() {
                 { label: t("nav.bestrides"), to: "/bestrides" },
               ],
             },
+            // New Newsletter Section
+            {
+              title: t("newsletter.title"),
+              icon: Mail,
+              customContent: (
+                <div className="footer-newsletter">
+                  <p className="footer-newsletter-description">
+                    {t("newsletter.description")}
+                  </p>
+                  <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
+                    <div className="footer-newsletter-input-group">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder={t("Enter your email")}
+                        className="footer-newsletter-input"
+                        disabled={isLoading}
+                      />
+                      <button 
+                        type="submit" 
+                        className="footer-newsletter-button"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? t("newsletter.subscribing") : t("newsletter")}
+                      </button>
+                    </div>
+                    {subscriptionStatus && (
+                      <p className={`footer-newsletter-status ${
+                        subscriptionStatus === t("newsletter.success") 
+                          ? "footer-newsletter-status-success" 
+                          : "footer-newsletter-status-error"
+                      }`}>
+                        {subscriptionStatus}
+                      </p>
+                    )}
+                  </form>
+                </div>
+              ),
+            },
             {
               title: t("footer.followUs"),
               icon: Share,
@@ -81,7 +164,9 @@ function Footer() {
                 <section.icon className="footer-section-icon" />
                 <h4 className="footer-section-title">{section.title}</h4>
               </div>
-              {section.links.length > 0 ? (
+              {section.customContent ? (
+                section.customContent
+              ) : section.links.length > 0 ? (
                 <ul className="footer-links">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
