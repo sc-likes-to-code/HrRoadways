@@ -17,7 +17,7 @@ import EcoRoutes from './components/EcoRoutes';
 import BookingPage from './components/BookingPage'; // do not lazy load this
 import ThemeWrapper from './components/ThemeWrapper';
 
-// Lazy-loaded components (merging the new TravelPackagesPage into main's lazy structure)
+// Lazy-loaded components
 const Hero = lazy(() => import('./components/hero'));
 const Available = lazy(() => import('./components/Available'));
 const AboutUs = lazy(() => import('./components/Aboutus'));
@@ -45,13 +45,10 @@ const WeeklyTimetable = lazy(() => import('./components/Timetable'));
 const TourGuidePage = lazy(() => import('./components/TourGuidePage'));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 const Login = lazy(() => import('./components/Login'));
-// const Register = lazy(() => import('./components/Register')) // Removed/commented out in main
-// const ForgotPassword = lazy(() => import('./components/ForgotPassword')) // Removed/commented out in main
 const MyBookings = lazy(() => import('./components/Userprofile'));
 const NotFound = lazy(() => import('./components/NotFound'));
 const ToastTest = lazy(() => import('./components/ToastTest'));
 const FaqPage = lazy(() => import('./components/faq'));
-// NEW IMPORT from add-travel-packages branch
 const TravelPackagesPage = lazy(() => import('./components/TravelPackagesPage'));
 
 function BookingPageWrapper() {
@@ -78,7 +75,6 @@ function App() {
 							<ScrollToTop />
 							<Routes>
 								<Route path='/' element={<Hero />} />
-								{/* NEW ROUTE ADDED from add-travel-packages branch */}
 								<Route path="/travel-packages" element={<TravelPackagesPage />} />
 								<Route path='/Available' element={<Available />} />
 								<Route path='/about' element={<AboutUs />} />
@@ -87,49 +83,27 @@ function App() {
 								<Route path='/bestrides' element={<BestRides />} />
 								<Route path='/policy' element={<InfoPage />} />
 								<Route path='/rules' element={<RulesAndGuidelines />} />
-								<Route
-									path='/under-construction'
-									element={<UnderConstruction />}
-								/>
-								<Route
-									path='/contactUs'
-									element={<Navigate to='/contact' replace />}
-								/>
+								<Route path='/under-construction' element={<UnderConstruction />} />
+								<Route path='/contactUs' element={<Navigate to='/contact' replace />} />
 								<Route path='/contact' element={<ContactUs />} />
 								<Route path='/blog' element={<Blog />} />
 								<Route path='/payment' element={<PaymentOptions />} />
 								<Route path='/track' element={<BusTracker />} />
-								<Route
-									path='/luxury'
-									element={<RoyalHaryanaTourism />}
-								/>
+								<Route path='/luxury' element={<RoyalHaryanaTourism />} />
 								<Route path='/donate' element={<DonatePage />} />
 								<Route path='/services' element={<ServicesPage />} />
-								<Route
-									path='/travellocations'
-									element={<TravelLocations />}
-								/>
+								<Route path='/travellocations' element={<TravelLocations />} />
 								<Route path='/helpline' element={<HelplinePage />} />
 								<Route path='/schedule' element={<WeeklyTimetable />} />
 								<Route path='/reviews' element={<Reviews />} />
-								<Route
-									path='/affiliate'
-									element={<AffiliateProgram />}
-								/>
+								<Route path='/affiliate' element={<AffiliateProgram />} />
 								<Route path='/card' element={<BusCard />} />
 								<Route path='/guide' element={<Tutorial />} />
 								<Route path='/tour-guide' element={<TourGuidePage />} />
-								<Route
-									path='/booking'
-									element={<BookingPageWrapper />}
-								/>
+								<Route path='/booking' element={<BookingPageWrapper />} />
 								<Route path='/login' element={<Login />} />
-								{/* Register and ForgotPassword are excluded as they were not confirmed to exist in the main branch */}
 								<Route path='/mybookings' element={<MyBookings />} />
-								<Route
-									path='/yash'
-									element={<h1>Yash&apos;s Page</h1>}
-								/>
+								<Route path='/yash' element={<h1>Yash&apos;s Page</h1>} />
 								<Route path='/toast-test' element={<ToastTest />} />
 								<Route path='*' element={<NotFound />} />
 							</Routes>
@@ -154,6 +128,5 @@ function App() {
 		</ThemeWrapper>
 	);
 }
-
 
 export default App;
