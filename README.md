@@ -465,6 +465,5 @@ App won't start (dev)
 
 <div align="center">
 
-[🔼 Back to Top](#-hrroadways)
 
 </div>
