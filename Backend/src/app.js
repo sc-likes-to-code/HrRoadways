@@ -2,8 +2,8 @@ import {} from 'dotenv/config';
 import express from "express";
 import cors from "cors"; 
 import cookieParser from "cookie-parser";
+import newsletterRoutes from './routes/newsletter.js';
 const app = express();
-const newsletterRoutes = require('./routes/newsletter');
 
 app.use(cors({
     origin:process.env.CORS_ORIGIN,

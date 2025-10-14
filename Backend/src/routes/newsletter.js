@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import { body, validationResult } from 'express-validator';
+import Subscriber from '../models/Subscriber.js';
+
 const router = express.Router();
-const { body, validationResult } = require('express-validator');
-const Subscriber = require('../models/Subscriber');
 
 // POST /api/newsletter/subscribe
 router.post('/subscribe', 
@@ -76,4 +77,4 @@ router.get('/subscribers', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -350,4 +350,17 @@
   "distance": "Distance",
   "routeType": "Route Type",
   "availableBusTypes": "Available Bus Types"
+  ,
+  "newsletter": {
+    "title": "Newsletter",
+    "description": "Subscribe to get updates on new routes and offers",
+    "Enter your email": "Enter your email",
+    "enterEmail": "Please enter your email address",
+    "invalidEmail": "Please enter a valid email address",
+    "success": "Successfully subscribed to our newsletter!",
+    "error": "Subscription failed. Please try again.",
+    "subscribing": "Subscribing...",
+    "subscribe": "Subscribe"
+  }
 }
+

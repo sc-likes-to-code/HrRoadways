@@ -21,7 +21,7 @@ function Footer() {
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!email) {
       setSubscriptionStatus(t("newsletter.enterEmail"));
       return;
@@ -36,7 +36,8 @@ function Footer() {
     setSubscriptionStatus("");
 
     try {
-      const response = await fetch("/api/newsletter/subscribe", {
+      const API_BASE_URL = 'http://localhost:8000';
+      const response = await fetch(`${API_BASE_URL}/api/newsletter/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,6 +54,7 @@ function Footer() {
         setSubscriptionStatus(data.message || t("newsletter.error"));
       }
     } catch (error) {
+      console.error('Newsletter subscription error:', error);
       setSubscriptionStatus(t("newsletter.error"));
     } finally {
       setIsLoading(false);
@@ -128,24 +130,23 @@ function Footer() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder={t("Enter your email")}
+                        placeholder={t("newsletter.enterEmail")}
                         className="footer-newsletter-input"
                         disabled={isLoading}
                       />
-                      <button 
-                        type="submit" 
+                      <button
+                        type="submit"
                         className="footer-newsletter-button"
                         disabled={isLoading}
                       >
-                        {isLoading ? t("newsletter.subscribing") : t("newsletter")}
+                        {isLoading ? t("newsletter.subscribing") : t("newsletter.subscribe")}
                       </button>
                     </div>
                     {subscriptionStatus && (
-                      <p className={`footer-newsletter-status ${
-                        subscriptionStatus === t("newsletter.success") 
-                          ? "footer-newsletter-status-success" 
+                      <p className={`footer-newsletter-status ${subscriptionStatus === t("newsletter.success")
+                          ? "footer-newsletter-status-success"
                           : "footer-newsletter-status-error"
-                      }`}>
+                        }`}>
                         {subscriptionStatus}
                       </p>
                     )}
