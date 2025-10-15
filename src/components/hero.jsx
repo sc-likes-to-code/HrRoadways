@@ -238,35 +238,54 @@ const Hero = () => {
       <div className="hero-features">
         <div className="features-container">
           <div className="feature-item">
-            <Shield className="feature-icon" />
+            <div className="info-card info-card--compact">
+              <div className="info-card-icon" aria-hidden>
+                <Shield className="w-5 h-5" />
+              </div>
             <div>
-              <div className="feature-title">{t("about.safety")}</div>
-              <div className="feature-desc">{t("about.safetyDesc")}</div>
-            </div>
-          </div>
-          <div className="feature-item">
-            <Clock className="feature-icon" />
-            <div>
-              <div className="feature-title">{t("about.reliability")}</div>
-              <div className="feature-desc">{t("about.reliabilityDesc")}</div>
-            </div>
-          </div>
-          <div className="feature-item">
-            <Star className="feature-icon" />
-            <div>
-              <div className="feature-title">{t("about.comfort")}</div>
-              <div className="feature-desc">{t("about.comfortDesc")}</div>
-            </div>
-          </div>
-          <div className="feature-item">
-            <Phone className="feature-icon" />
-            <div>
-              <div className="feature-title">{t("services.support")}</div>
-              <div className="feature-desc">{t("services.supportDesc")}</div>
+              <div className="info-card-title">{t("about.safety")}</div>
+              <div className="info-card-desc">{t("about.safetyDesc")}</div>
             </div>
           </div>
         </div>
+
+          <div className="feature-item">
+            <div className="info-card info-card--compact">
+              <div className="info-card-icon" aria-hidden>
+                <Clock className="w-5 h-5" />
+              </div>
+            <div>
+              <div className="info-card-title">{t("about.reliability")}</div>
+              <div className="info-card-desc">{t("about.reliabilityDesc")}</div>
+            </div>
+          </div>
+          </div>
+
+          <div className="feature-item">
+            <div className="info-card info-card--compact">
+              <div className="info-card-icon" aria-hidden>
+                <Star className="w-5 h-5" />
+              </div>
+            <div>
+              <div className="info-card-title">{t("about.comfort")}</div>
+              <div className="info-card-desc">{t("about.comfortDesc")}</div>
+            </div>
+          </div>
+        </div>
+    
+          <div className="feature-item">
+            <div className="info-card info-card--compact">
+              <div className="info-card-icon" aria-hidden>
+                <Phone className="w-5 h-5" />
+              </div>
+            <div>
+              <div className="info-card-title">{t("services.support")}</div>
+              <div className="info-card-desc">{t("services.supportDesc")}</div>
+            </div>
+            </div>
+          </div>
       </div>
+    </div>
 
       <div className="hero-content dark:bg-gray-950 dark:text-white">
         <div className="content-grid">
