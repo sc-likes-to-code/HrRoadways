@@ -451,7 +451,8 @@ App won't start (dev)
 * **Use PNG/JPG** files and compress images before uploading.
 * **Keep your fork updated** before submitting PRs.
 
----
+
+
 
 ## Contributor
 
@@ -466,10 +467,8 @@ Your contributions—whether it’s code, design, testing, or documentation—ar
 
 See full list of contribution from contributor [Contributor Graph](https://github.com/NishantRana07/HrRoadways/graphs/contributors)
 
----
 
-<div align="center">
 
-[🔼 Back to Top](#-hrroadways)
+
 
 </div>
