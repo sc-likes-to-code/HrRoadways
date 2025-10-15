@@ -11,7 +11,7 @@ export async function subscribeNewsletter(email) {
       throw new Error("Email is required");
     }
 
-    // Optional: basic email validation
+    // Optional: basic email validation 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       throw new Error("Invalid email format");

@@ -1,6 +1,4 @@
 {
-  // ... your existing translation keys above
-
   "newsletter": {
     "title": "Subscribe to our Newsletter",
     "description": "Get the latest updates, offers, and travel tips delivered straight to your inbox!",
@@ -12,5 +10,5 @@
     "privacyPolicy": "Privacy Policy"
   }
 
-  // ... your existing keys below
 }
+  

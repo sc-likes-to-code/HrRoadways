@@ -9,7 +9,7 @@
 
 .footer-bg-overlay {
   position: absolute;
-  inset: 0;
+  inset: 0; 
   opacity: 0.08;
   pointer-events: none;
 }
