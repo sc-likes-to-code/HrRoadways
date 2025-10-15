@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Newsletter schema
+// Newsletter schema 
 const newsletterSchema = new mongoose.Schema(
   {
     email: {

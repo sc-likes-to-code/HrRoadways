@@ -7,7 +7,7 @@ import {
 	Routes,
 	Route,
 	useLocation,
-	Navigate,
+	Navigate, 
 } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Navigation from './components/nav';
@@ -162,5 +162,6 @@ function App() {
 }
 
 export default App;
+
 
 
