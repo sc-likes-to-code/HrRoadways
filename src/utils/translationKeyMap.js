@@ -1,6 +1,6 @@
 // Translation Key Mapping Utility
 // This helps developers find the right translation keys
-import { Facebook, Instagram, Linkedin, Twitter  } from "lucide-react";
+import { SiFacebook, SiX, SiInstagram, SiLinkedin } from "react-icons/si";
 
 export const translationKeyMap = {
   // Navigation keys
@@ -9,7 +9,7 @@ export const translationKeyMap = {
     about: "nav.about",
     services: "nav.services",
     contact: "nav.contact",
-    trip: "nav.trip",
+    trip: "nav.trip",   
     track: "nav.track",
     blog: "nav.blog",
     donate: "nav.donate",
@@ -279,7 +279,7 @@ export default translationKeyMap;
 // Social media links in footer section
 export const socialMediaLinks = [
   {
-    Icon: Facebook,
+    Icon: SiFacebook,
     color: "social-facebook",
     href: "https://www.facebook.com/",
     target: "_blank",
@@ -287,7 +287,7 @@ export const socialMediaLinks = [
     label: "Visit our Facebook Profile",
   },
   {
-    Icon: Twitter,
+    Icon: SiX,
     color: "social-twitter",
     href: "https://x.com/TechwNishant",
     target: "_blank",
@@ -295,7 +295,7 @@ export const socialMediaLinks = [
     label: "Visit our X Profile",
   },
   {
-    Icon: Instagram,
+    Icon: SiInstagram,
     color: "social-instagram",
     href: "https://www.instagram.com/nishantelite/",
     target: "_blank",
@@ -303,7 +303,7 @@ export const socialMediaLinks = [
     label: "Visit our Instagram Profile",
   },
   {
-    Icon: Linkedin,
+    Icon: SiLinkedin,
     color: "social-linkedin",
     href: "https://www.linkedin.com/in/nishantrana07/",
     target: "_blank",
