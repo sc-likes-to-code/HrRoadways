@@ -16,6 +16,8 @@ import Header from './components/Header';
 import EcoRoutes from './components/EcoRoutes';
 import BookingPage from './components/BookingPage'; // do not lazy load this
 import ThemeWrapper from './components/ThemeWrapper';
+// 🟢 Added — Newsletter Subscription Component Import
+import NewsletterSubscription from './components/NewsletterSubscription'; 
 
 // Lazy-loaded components (merging the new TravelPackagesPage into main's lazy structure)
 const Hero = lazy(() => import('./components/hero'));
@@ -134,6 +136,10 @@ function App() {
 								<Route path='*' element={<NotFound />} />
 							</Routes>
 						</Suspense>
+
+						{/* 🟢 Added Newsletter Section (appears above Footer) */}
+						<NewsletterSubscription />
+						
 						<Footer />
 						<ScrollButton />
 						<ToastContainer
@@ -155,5 +161,6 @@ function App() {
 	);
 }
 
-
 export default App;
+
+

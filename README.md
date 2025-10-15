@@ -451,8 +451,24 @@ App won't start (dev)
 * **Use PNG/JPG** files and compress images before uploading.
 * **Keep your fork updated** before submitting PRs.
 
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-  
+
+
+
+## Contributor
+
+A heartfelt thank you to all the contributors who have dedicated their time and effort to make this project a success.  
+Your contributions—whether it’s code, design, testing, or documentation—are truly appreciated! 🚀
+
+#### Thanks to all the wonderful contributors 💖
+
+<a href="https://github.com/NishantRana07/HrRoadways/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NishantRana07/HrRoadways" />
+</a>
+
+See full list of contribution from contributor [Contributor Graph](https://github.com/NishantRana07/HrRoadways/graphs/contributors)
+
+
+
 
 
 </div>
