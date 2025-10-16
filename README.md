@@ -265,18 +265,93 @@ To get a Google Maps API key:
 
 ---
 
-## File Structure
+##  📁 HrRoadways – Full Project Structure
 
 <pre>
 HrRoadways/
-├── Databases/
+│
+├── .github/                                # GitHub configuration & workflows
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md                   # Template for reporting bugs
+│   │   ├── feature_request.md              # Template for feature requests
+│   │   └── general_issue.md                # General issue template
+│   │
+│   ├── workflows/
+│   │   ├── issue-create-automate-message.yml  # Auto message for issues
+│   │   └── pr-create-automate-message.yml     # Auto message for PRs
+│   │
+│   ├── PULL_REQUEST_TEMPLATE.md            # Pull request template
+│   ├── pull_request_template.md            # Duplicate/alternative PR template
+│   ├── image.png                           # Workflow or repo-related image
+│   └── image-1.png
+│
+├── .vscode/                                # VSCode configurations
+│   ├── launch.json
+│   └── settings.json
+│
+├── Backend/                                # Main backend folder
+│   ├── src/
+│   ├── .env.sample                         # Example environment file
+│   ├── package.json
+│   └── package-lock.json
+│
+├── Databases/                              # Databases and JSON data
 │   └── State_Database/
-├── backend/
+│       └── Haryana.json
+│
+├── backend/                                # Backend routes & server files
 │   ├── routes/
-│   └── mainServer.js
-├── src/
-│   ├── components/
-│   └── assets/
+│   ├── libs/
+│   ├── public/
+│   ├── mainServer.js
+│   └── server.js
+│
+├── Places/                                 # Additional app data (e.g., maps)
+│
+├── assets/                                 # Assets (icons, images, etc.)
+│   └── icons/
+│
+├── techstack/                              # Tech stack-related info/resources
+│
+├── Buses.jpg                               # Static image asset
+├── _redirects                              # For routing (used in Vercel/Netlify)
+├── service-worker.js                       # PWA service worker file
+│
+├── src/                                    # Frontend source code
+│   ├── assets/
+│   ├── components/                         # Reusable UI components
+│   ├── contexts/                           # React contexts
+│   ├── data/                               # Static data files
+│   ├── hooks/                              # Custom React hooks
+│   ├── i18n/                               # Internationalization setup
+│   ├── services/                           # API and backend services
+│   ├── store/                              # State management (Redux/Zustand/etc.)
+│   ├── styles/                             # CSS/Tailwind/Global styles
+│   ├── utils/                              # Helper functions
+│   ├── App.jsx                             # Main React App component
+│   ├── index.css
+│   ├── main.jsx                            # Entry point
+│   └── translations.json                   # Language translations
+│
+├── .env                                    # Environment variables
+├── .gitignore                              # Git ignore rules
+│
+├── CLERK_SETUP.md                          # Clerk authentication setup
+├── CODE_OF_CONDUCT.md                      # Contributor behavior rules
+├── CONTRIBUTION_GUIDELINES.md              # How to contribute
+├── LICENSE                                 # Open-source license
+├── README.md                               # Project documentation
+├── ROUTES_GUIDE.md                         # API routes documentation
+├── TranslationLink.md                      # Translation related guide
+│
+├── eslint.config.js                        # ESLint configuration
+├── index.html                              # Root HTML file (Vite entry)
+├── package.json                            # Project dependencies and scripts
+├── package-lock.json                       # Dependency lock file
+├── postcss.config.js                       # PostCSS configuration
+├── tailwind.config.js                      # TailwindCSS configuration
+├── vercel.json                             # Vercel deployment settings
+└── vite.config.js                          # Vite configuration
 </pre>
 
 - Json Database hosting link - https://jsonblob.com/api/jsonBlob/1333092652136194048
