@@ -54,6 +54,77 @@ HrRoadways solves everyday transit friction by making government bus information
 
  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
+ <!-- Project Structure as HTML for README.md -->
+<h2>📁 Project Structure</h2>
+<pre>
+HrRoadways/
+├── .github/
+├── .vscode/
+├── Backend/
+├── Databases/
+│   └── State_Database/
+├── backend/
+│   ├── routes/
+│   └── mainServer.js
+├── libs/
+├── public/
+├── src/
+│   ├── components/
+│   └── assets/
+├── Places/
+│   └── Location/
+│       └── Location.json
+├── .env
+├── .gitignore
+├── CLERK_SETUP.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTION_GUIDELINES.md
+├── LICENSE
+├── README.md
+├── ROUTES_GUIDE.md
+├── TranslationLink.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vercel.json
+├── vite.config.js
+</pre>
+
+
+<ul>
+  <li><b>.github/</b>: GitHub Actions workflows, issue templates, and CI/CD configuration</li>
+  <li><b>.vscode/</b>: Visual Studio Code workspace settings and extensions</li>
+  <li><b>Backend/</b>: (May be legacy or alternative backend logic; clarify in your repo)</li>
+  <li><b>Databases/State_Database/</b>: State-specific bus route and schedule JSON data</li>
+  <li><b>backend/</b>: Node.js + Express backend code (API logic & routing)</li>
+  <li><b>libs/</b>: Shared utility libraries and helper modules</li>
+  <li><b>public/</b>: Static files (images, favicon, manifest) served at root</li>
+  <li><b>src/components/</b>: React UI components for frontend</li>
+  <li><b>src/assets/</b>: Images, icons, and other static frontend resources</li>
+  <li><b>Places/Location/Location.json</b>: JSON files with details about popular places/cities</li>
+  <li><b>.env</b>: Environment variables for secrets or API keys (not tracked in git)</li>
+  <li><b>.gitignore</b>: Specifies files/folders git should ignore</li>
+  <li><b>CLERK_SETUP.md</b>: Clerk authentication setup instructions</li>
+  <li><b>CODE_OF_CONDUCT.md</b>: Contributor behavior standards and policies</li>
+  <li><b>CONTRIBUTION_GUIDELINES.md</b>: Steps and etiquette for contributing</li>
+  <li><b>LICENSE</b>: Project's open-source license text</li>
+  <li><b>README.md</b>: Main documentation and onboarding guide</li>
+  <li><b>ROUTES_GUIDE.md</b>: Custom routes documentation</li>
+  <li><b>TranslationLink.md</b>: Instructions for translation collaboration</li>
+  <li><b>eslint.config.js</b>: ESLint configuration for code linting</li>
+  <li><b>index.html</b>: Main HTML entry point for frontend</li>
+  <li><b>package-lock.json</b>, <b>package.json</b>: NPM package configuration and dependency lockfiles</li>
+  <li><b>postcss.config.js</b>: PostCSS configuration file</li>
+  <li><b>tailwind.config.js</b>: Tailwind CSS configuration</li>
+  <li><b>vercel.json</b>: Vercel deployment configuration</li>
+  <li><b>vite.config.js</b>: Vite build and tooling configuration</li>
+</ul>
+
+
+
 ## Project Flowchart
 <img width="1125" height="760" alt="Untitled diagram-2025-10-11-075010" src="https://github.com/user-attachments/assets/5a406a55-d242-4b7f-9aec-de0b0194a896" />
 
@@ -70,6 +141,8 @@ HrRoadways solves everyday transit friction by making government bus information
 | i18next       | Internationalization                       |
 | Tailwind CSS  | Utility-first styling                      |
 | Framer Motion | Smooth, production-ready animations        |
+| Node.js + Express | Backend server                       |
+| Axios         | HTTP client for API requests               |
 
 </div>
 
@@ -140,17 +213,145 @@ To add new translations:
 2. Use the `useTranslation` hook: `const { t } = useTranslation();`
 3. Reference translations with: `{t('key.subkey')}`
 
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+### Backend Server
 
-## File Structure
+This project includes a backend server built with Node.js and Express to handle API requests.
+
+#### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/health` | GET | Health check endpoint |
+| `/api/smartRoute` | POST | Get smart route suggestions |
+
+#### Smart Route API
+
+The smart route API accepts a POST request with the following JSON body:
+
+```json
+{
+  "source": "Chandigarh",
+  "destination": "Delhi"
+}
+```
+
+It returns route suggestions based on the bus database with optional travel time and distance data from Google Maps API.
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+
+# API Keys
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+
+# Database Paths
+DB_PATH=./Databases/State_Database/Haryana.json
+```
+
+To get a Google Maps API key:
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable billing for the project
+4. Go to "APIs & Services" > "Library"
+5. Search for "Distance Matrix API" and enable it
+6. Go to "APIs & Services" > "Credentials"
+7. Click "Create Credentials" > "API Key"
+8. Copy the API key and add it to your `.env` file
+
+---
+
+##  📁 HrRoadways – Full Project Structure
 
 <pre>
 HrRoadways/
-├── Databases/
+│
+├── .github/                                # GitHub configuration & workflows
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md                   # Template for reporting bugs
+│   │   ├── feature_request.md              # Template for feature requests
+│   │   └── general_issue.md                # General issue template
+│   │
+│   ├── workflows/
+│   │   ├── issue-create-automate-message.yml  # Auto message for issues
+│   │   └── pr-create-automate-message.yml     # Auto message for PRs
+│   │
+│   ├── PULL_REQUEST_TEMPLATE.md            # Pull request template
+│   ├── pull_request_template.md            # Duplicate/alternative PR template
+│   ├── image.png                           # Workflow or repo-related image
+│   └── image-1.png
+│
+├── .vscode/                                # VSCode configurations
+│   ├── launch.json
+│   └── settings.json
+│
+├── Backend/                                # Main backend folder
+│   ├── src/
+│   ├── .env.sample                         # Example environment file
+│   ├── package.json
+│   └── package-lock.json
+│
+├── Databases/                              # Databases and JSON data
 │   └── State_Database/
-├── src/
-│   ├── components/
-│   └── assets/
+│       └── Haryana.json
+│
+├── backend/                                # Backend routes & server files
+│   ├── routes/
+│   ├── libs/
+│   ├── public/
+│   ├── mainServer.js
+│   └── server.js
+│
+├── Places/                                 # Additional app data (e.g., maps)
+│
+├── assets/                                 # Assets (icons, images, etc.)
+│   └── icons/
+│
+├── techstack/                              # Tech stack-related info/resources
+│
+├── Buses.jpg                               # Static image asset
+├── _redirects                              # For routing (used in Vercel/Netlify)
+├── service-worker.js                       # PWA service worker file
+│
+├── src/                                    # Frontend source code
+│   ├── assets/
+│   ├── components/                         # Reusable UI components
+│   ├── contexts/                           # React contexts
+│   ├── data/                               # Static data files
+│   ├── hooks/                              # Custom React hooks
+│   ├── i18n/                               # Internationalization setup
+│   ├── services/                           # API and backend services
+│   ├── store/                              # State management (Redux/Zustand/etc.)
+│   ├── styles/                             # CSS/Tailwind/Global styles
+│   ├── utils/                              # Helper functions
+│   ├── App.jsx                             # Main React App component
+│   ├── index.css
+│   ├── main.jsx                            # Entry point
+│   └── translations.json                   # Language translations
+│
+├── .env                                    # Environment variables
+├── .gitignore                              # Git ignore rules
+│
+├── CLERK_SETUP.md                          # Clerk authentication setup
+├── CODE_OF_CONDUCT.md                      # Contributor behavior rules
+├── CONTRIBUTION_GUIDELINES.md              # How to contribute
+├── LICENSE                                 # Open-source license
+├── README.md                               # Project documentation
+├── ROUTES_GUIDE.md                         # API routes documentation
+├── TranslationLink.md                      # Translation related guide
+│
+├── eslint.config.js                        # ESLint configuration
+├── index.html                              # Root HTML file (Vite entry)
+├── package.json                            # Project dependencies and scripts
+├── package-lock.json                       # Dependency lock file
+├── postcss.config.js                       # PostCSS configuration
+├── tailwind.config.js                      # TailwindCSS configuration
+├── vercel.json                             # Vercel deployment settings
+└── vite.config.js                          # Vite configuration
 </pre>
 
 - Json Database hosting link - https://jsonblob.com/api/jsonBlob/1333092652136194048
@@ -169,7 +370,14 @@ HrRoadways/
   npm install
 ```
 
-3. Run the development server to access the site locally:
+3. Create a `.env` file in the root directory with your API keys (see Environment Variables section above)
+
+4. Run the backend server:
+```
+  npm run server
+```
+
+5. In a new terminal, run the development server to access the site locally:
 
 ```
   npm run dev
@@ -451,10 +659,24 @@ App won't start (dev)
 * **Use PNG/JPG** files and compress images before uploading.
 * **Keep your fork updated** before submitting PRs.
 
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-  
-<div align="center">
 
-[🔼 Back to Top](#-hrroadways)
+
+
+## Contributor
+
+A heartfelt thank you to all the contributors who have dedicated their time and effort to make this project a success.  
+Your contributions—whether it’s code, design, testing, or documentation—are truly appreciated! 🚀
+
+#### Thanks to all the wonderful contributors 💖
+
+<a href="https://github.com/NishantRana07/HrRoadways/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NishantRana07/HrRoadways" />
+</a>
+
+See full list of contribution from contributor [Contributor Graph](https://github.com/NishantRana07/HrRoadways/graphs/contributors)
+
+
+
+
 
 </div>
