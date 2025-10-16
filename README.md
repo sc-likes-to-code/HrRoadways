@@ -54,6 +54,77 @@ HrRoadways solves everyday transit friction by making government bus information
 
  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
+ <!-- Project Structure as HTML for README.md -->
+<h2>📁 Project Structure</h2>
+<pre>
+HrRoadways/
+├── .github/
+├── .vscode/
+├── Backend/
+├── Databases/
+│   └── State_Database/
+├── backend/
+│   ├── routes/
+│   └── mainServer.js
+├── libs/
+├── public/
+├── src/
+│   ├── components/
+│   └── assets/
+├── Places/
+│   └── Location/
+│       └── Location.json
+├── .env
+├── .gitignore
+├── CLERK_SETUP.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTION_GUIDELINES.md
+├── LICENSE
+├── README.md
+├── ROUTES_GUIDE.md
+├── TranslationLink.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vercel.json
+├── vite.config.js
+</pre>
+
+
+<ul>
+  <li><b>.github/</b>: GitHub Actions workflows, issue templates, and CI/CD configuration</li>
+  <li><b>.vscode/</b>: Visual Studio Code workspace settings and extensions</li>
+  <li><b>Backend/</b>: (May be legacy or alternative backend logic; clarify in your repo)</li>
+  <li><b>Databases/State_Database/</b>: State-specific bus route and schedule JSON data</li>
+  <li><b>backend/</b>: Node.js + Express backend code (API logic & routing)</li>
+  <li><b>libs/</b>: Shared utility libraries and helper modules</li>
+  <li><b>public/</b>: Static files (images, favicon, manifest) served at root</li>
+  <li><b>src/components/</b>: React UI components for frontend</li>
+  <li><b>src/assets/</b>: Images, icons, and other static frontend resources</li>
+  <li><b>Places/Location/Location.json</b>: JSON files with details about popular places/cities</li>
+  <li><b>.env</b>: Environment variables for secrets or API keys (not tracked in git)</li>
+  <li><b>.gitignore</b>: Specifies files/folders git should ignore</li>
+  <li><b>CLERK_SETUP.md</b>: Clerk authentication setup instructions</li>
+  <li><b>CODE_OF_CONDUCT.md</b>: Contributor behavior standards and policies</li>
+  <li><b>CONTRIBUTION_GUIDELINES.md</b>: Steps and etiquette for contributing</li>
+  <li><b>LICENSE</b>: Project's open-source license text</li>
+  <li><b>README.md</b>: Main documentation and onboarding guide</li>
+  <li><b>ROUTES_GUIDE.md</b>: Custom routes documentation</li>
+  <li><b>TranslationLink.md</b>: Instructions for translation collaboration</li>
+  <li><b>eslint.config.js</b>: ESLint configuration for code linting</li>
+  <li><b>index.html</b>: Main HTML entry point for frontend</li>
+  <li><b>package-lock.json</b>, <b>package.json</b>: NPM package configuration and dependency lockfiles</li>
+  <li><b>postcss.config.js</b>: PostCSS configuration file</li>
+  <li><b>tailwind.config.js</b>: Tailwind CSS configuration</li>
+  <li><b>vercel.json</b>: Vercel deployment configuration</li>
+  <li><b>vite.config.js</b>: Vite build and tooling configuration</li>
+</ul>
+
+
+
 ## Project Flowchart
 <img width="1125" height="760" alt="Untitled diagram-2025-10-11-075010" src="https://github.com/user-attachments/assets/5a406a55-d242-4b7f-9aec-de0b0194a896" />
 
