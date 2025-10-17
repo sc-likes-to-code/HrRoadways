@@ -80,11 +80,25 @@ const Navigation = () => {
               </span>
             </NavLink>
 
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center space-x-6">
-              <NavLink to="/" className="text-gray-700 hover:text-blue-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">
-                {t('nav.home')}
-              </NavLink>
+  return (
+    <header className="w-full">
+      {/* Top Bar */}
+      <div className="bg-blue-900 text-white py-2 hidden md:block w-full">
+        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
+          <div className="flex items-center space-x-4">
+            <span className="flex items-center">
+              <Phone className="w-4 h-4 mr-1" />
+              1800-180-2345
+            </span>
+            <NavLink to="/rules" className="hover:underline">
+              {t('nav.guide')}
+            </NavLink>
+          </div>
+          <div className="flex items-center space-x-4">
+            <LanguageSelector variant="navbar" />
+          </div>
+        </div>
+      </div>
 
               <div
                 className="relative group"
@@ -254,11 +268,88 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Conditionally Render Modals (kept from main branch structure) */}
-      {modalType === 'login' && <Login />}
-      {modalType === 'signup' && <SignUpModal />}
-    </navbar>
-  );
+          <ul className="space-y-4">
+            {/* Language Selector at the top */}
+            <li className="py-2 border-b border-gray-200 dark:border-gray-600">
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-3">
+                {t('common.selectLanguage', 'Select Language')}
+              </div>
+              <LanguageSelector variant="mobile" />
+            </li>
+            <li className="py-2 border-b border-gray-200 dark:border-gray-600">
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-3">
+                {t('common.theme', 'Theme')}
+              </div>
+              <ThemeToggle />
+            </li>
+
+            <li><NavLink to="/" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.home')}</NavLink></li>
+            <li className="relative">
+              <button onClick={() => setIsServicesOpen(!isServicesOpen)} className="flex py-2 text-gray-700 hover:text-blue-600 items-center justify-between w-full dark:text-gray-200 dark:hover:text-blue-400">
+                {t('nav.services')}
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''} dark:text-gray-200`} />
+              </button>
+              {isServicesOpen && (
+                <ul className="ml-4 mt-1 space-y-2">
+                  {servicesDropdown.map((item, idx) => (
+                    <li key={idx}>
+                      <NavLink
+                        to={item.path}
+                        className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 dark:text-gray-200 dark:hover:bg-gray-600"
+                        onClick={toggleSidebar}
+                      >
+                        {item.title}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <li><NavLink to="/trip" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.trip')}</NavLink></li>
+            <li><NavLink to="/travellocations" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.travellocations')}</NavLink></li>
+            <li><NavLink to="/about" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.about')}</NavLink></li>
+            <li><NavLink to="/blog" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.blog')}</NavLink></li>
+            <li><NavLink to="/donate" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.donate')}</NavLink></li>
+            <li><NavLink to="/faq" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.faq')}</NavLink></li>
+            <li><NavLink to="/helpline" onClick={toggleSidebar} className="block py-2 text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400">{t('nav.helpline')}</NavLink></li>
+            {!isSignedIn && (
+              <>
+                <li>
+                  <button
+                    onClick={() => openModal('login')}
+                    className="bg-blue-500 hover:bg-blue-600 px-4 py-2.5 rounded-lg text-white font-semibold transition ml-4 w-[80%] mb-2"
+                  >
+                    Login
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => openModal('signup')}
+                    className="bg-blue-500 hover:bg-blue-600 px-4 py-2.5 rounded-lg text-white font-semibold transition ml-4 w-[80%]"
+                  >
+                    Sign Up
+                  </button>
+                </li> 
+              </>
+            )}
+            {isSignedIn && (
+              <li>
+                <SignOutButton>
+                  <button className="bg-red-500 hover:bg-red-600 px-4 py-2.5 rounded-lg text-white font-semibold transition ml-4 w-[80%]">
+                    Sign Out
+                  </button>
+                </SignOutButton>
+              </li>
+            )}
+          </ul>
+        </div>
+
+      </div>
+            {/* Conditionally Render Modals */}
+            {modalType === 'login' && <Login />}
+            {modalType === 'signup' && <SignUpModal />}
+    </header>
+  );
 };
 
 export default Navigation;

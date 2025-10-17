@@ -45,6 +45,24 @@ const AffiliateProgram = ({ isHindi = false }) => {
     averageCommission: '₹1,890'
   });
 
+const smallGradients = [
+  'linear-gradient(135deg, #fff7ed 0%, #fde68a 100%)',
+  'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+  'linear-gradient(135deg, #ecfccb 0%, #bbf7d0 100%)'
+];
+  
+  const iconMap = {
+    DollarSign,
+    Gift,
+    TrendingUp,
+    UserPlus,
+    Star,
+    Copy,
+    Check,
+    Users,
+    Zap
+  };
+  
   const copyReferralCode = () => {
     navigator.clipboard.writeText(referralCode);
     setCopiedCode(true);
@@ -53,23 +71,42 @@ const AffiliateProgram = ({ isHindi = false }) => {
 
   const tabContent = t ? {
     benefits: (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         className="grid gap-6 md:grid-cols-3"
       >
         {t.benefits.map((benefit, index) => (
-          <motion.div 
+          <motion.div
             key={index}
-            whileHover={{ scale: 1.05 }}
-            className={`p-6 rounded-xl shadow-lg text-center ${benefit.color}`}
+            whileHover={{ scale: 1.03 }}
+            className="benefit-card-wrapper"
           >
-            <div className="flex items-center justify-center mb-4">
-              <benefit.icon className="w-12 h-12" />
+            <div
+              className="p-6 rounded-xl shadow-lg text-center benefit-card"
+              style={{
+                background: smallGradients[index % smallGradients.length],
+                border: '1px solid rgba(11,37,80,0.04)'
+              }}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="benefit-icon-container" aria-hidden>
+                  {(() => {
+                    let IconComponent = Gift;
+                    if (typeof benefit.icon === 'string' && iconMap[benefit.icon]) {
+                      IconComponent = iconMap[benefit.icon];
+                    } else if (typeof benefit.icon === 'function') {
+                      IconComponent = benefit.icon;
+                    }
+                    return <IconComponent className="w-12 h-12 text-[#0b2545]" />;
+                  })()}
+                </div>
+              </div>
+
+              <h3 className="mb-2 text-xl font-bold benefit-title">{benefit.title}</h3>
+              <p className="benefit-desc text-sm">{benefit.description}</p>
             </div>
-            <h3 className="mb-2 text-xl font-bold">{benefit.title}</h3>
-            <p className="text-sm">{benefit.description}</p>
           </motion.div>
         ))}
       </motion.div>
