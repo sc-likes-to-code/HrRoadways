@@ -280,6 +280,7 @@ function Footer() {
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -354,8 +355,54 @@ function Footer() {
           </div>
         </div>
 
-        {/* 📰 Newsletter Section */}
-     
+        {/* 🟩 ADD HERE — Newsletter Subscription Section */}
+        <div className="footer-newsletter">
+          <div className="footer-newsletter-header">
+            <Mail className="footer-newsletter-icon" />
+            <h3>{t("footer.newsletterTitle") || "Subscribe to our Newsletter"}</h3>
+          </div>
+
+          {!subscribed ? (
+            <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
+              <input
+                type="email"
+                placeholder={t("footer.emailPlaceholder") || "Enter your email"}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="footer-newsletter-input"
+              />
+              <div className="footer-newsletter-buttons">
+                <button type="submit" className="footer-newsletter-btn">
+                  {t("footer.subscribe") || "Subscribe"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEmail("")}
+                  className="footer-newsletter-cancel"
+                >
+                  {t("footer.noThanks") || "No Thanks"}
+                </button>
+              </div>
+              <p className="footer-newsletter-terms">
+                By subscribing, you agree to our{" "}
+                <Link to="/policy" className="footer-link">
+                  {t("footer.privacyPolicy") || "Privacy Policy"}
+                </Link>{" "}
+                and{" "}
+                <Link to="/terms" className="footer-link">
+                  {t("footer.termsOfService") || "Terms of Service"}
+                </Link>.
+              </p>
+            </form>
+          ) : (
+            <p className="footer-newsletter-success">
+              {t("footer.subscribedMessage") ||
+                "Thank you for subscribing! You'll hear from us soon."}
+            </p>
+          )}
+        </div>
+        {/* 🟩 Newsletter section ends here */}
 
         {/* 📚 Footer Sections */}
         <div className="footer-sections">
