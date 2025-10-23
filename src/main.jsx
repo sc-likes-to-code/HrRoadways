@@ -48,18 +48,21 @@ class ErrorBoundary extends React.Component {
 }
 
 const root = createRoot(document.getElementById('root'));
+
+console.log('Starting app render...');
+console.log('Root element:', document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <ErrorBoundary>
-        {/* ✅ Wrap App with Newsletter Context if needed */}
-         <NewsletterProvider> 
         <App />
-         </NewsletterProvider> 
       </ErrorBoundary>
     </ClerkProvider>
   </React.StrictMode>
 );
+
+console.log('App render called');
 
 // Register Service Worker (disabled for debugging)
 // if ('serviceWorker' in navigator) {

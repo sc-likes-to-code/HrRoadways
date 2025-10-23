@@ -11,9 +11,6 @@ function Footer() {
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  // 🟩 ADD HERE — Newsletter local state
-  const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
@@ -95,7 +92,7 @@ function Footer() {
           </div>
 
           {!subscribed ? (
-            <form onSubmit={handleSubscribe} className="footer-newsletter-form">
+            <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
               <input
                 type="email"
                 placeholder={t("footer.emailPlaceholder") || "Enter your email"}

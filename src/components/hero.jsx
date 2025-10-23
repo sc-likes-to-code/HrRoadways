@@ -139,55 +139,28 @@ const Hero = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://jsonblob.com/api/jsonBlob/1333092652136194048")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const filteredBuses = data.filter((bus) => {
-          const isExactRoute =
-            bus.from.toLowerCase() === formData.src.toLowerCase() &&
-            bus.to.toLowerCase() === formData.dest.toLowerCase();
-          const isReverseRoute =
-            formData.roundTrip &&
-            bus.from.toLowerCase() === formData.dest.toLowerCase() &&
-            bus.to.toLowerCase() === formData.src.toLowerCase();
-          const isViaRoute =
-            bus.from.toLowerCase() === formData.src.toLowerCase() &&
-            bus.via?.toLowerCase().includes(formData.dest.toLowerCase());
-          const isViaReverseRoute =
-            formData.roundTrip &&
-            bus.from.toLowerCase() === formData.dest.toLowerCase() &&
-            bus.via?.toLowerCase().includes(formData.src.toLowerCase());
-          return isExactRoute || isReverseRoute || isViaRoute || isViaReverseRoute;
-        });
-        setBuses(filteredBuses);
-      })
-      .catch((error) => {
-        console.error("Error fetching buses:", error);
-        // Use fallback data if API fails
-        const filteredBuses = fallbackBusData.filter((bus) => {
-          const isExactRoute =
-            bus.from.toLowerCase() === formData.src.toLowerCase() &&
-            bus.to.toLowerCase() === formData.dest.toLowerCase();
-          const isReverseRoute =
-            formData.roundTrip &&
-            bus.from.toLowerCase() === formData.dest.toLowerCase() &&
-            bus.to.toLowerCase() === formData.src.toLowerCase();
-          const isViaRoute =
-            bus.from.toLowerCase() === formData.src.toLowerCase() &&
-            bus.Via?.toLowerCase().includes(formData.dest.toLowerCase());
-          const isViaReverseRoute =
-            formData.roundTrip &&
-            bus.from.toLowerCase() === formData.dest.toLowerCase() &&
-            bus.Via?.toLowerCase().includes(formData.src.toLowerCase());
-          return isExactRoute || isReverseRoute || isViaRoute || isViaReverseRoute;
-        });
-        setBuses(filteredBuses);
-      });
+    console.log('Search submitted:', formData);
+    
+    // Use fallback data directly (API has CORS issues)
+    const filteredBuses = fallbackBusData.filter((bus) => {
+      const isExactRoute =
+        bus.from.toLowerCase() === formData.src.toLowerCase() &&
+        bus.to.toLowerCase() === formData.dest.toLowerCase();
+      const isReverseRoute =
+        formData.roundTrip &&
+        bus.from.toLowerCase() === formData.dest.toLowerCase() &&
+        bus.to.toLowerCase() === formData.src.toLowerCase();
+      const isViaRoute =
+        bus.from.toLowerCase() === formData.src.toLowerCase() &&
+        bus.Via?.toLowerCase().includes(formData.dest.toLowerCase());
+      const isViaReverseRoute =
+        formData.roundTrip &&
+        bus.from.toLowerCase() === formData.dest.toLowerCase() &&
+        bus.Via?.toLowerCase().includes(formData.src.toLowerCase());
+      return isExactRoute || isReverseRoute || isViaRoute || isViaReverseRoute;
+    });
+    console.log('Filtered buses:', filteredBuses.length, 'matches found');
+    setBuses(filteredBuses);
   };
 
   // Handle bus card click to open modal

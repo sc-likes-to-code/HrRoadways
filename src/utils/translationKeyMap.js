@@ -49,19 +49,17 @@ export const translationKeyMap = {
     rides: "footer.rides",
     privacy: "footer.privacy",
     luxury: "footer.luxury",
-  },
-
-   // 🌟✨ ADDED NEWSLETTER SECTION KEYS ✨🌟
-    newsletterTitle: "footer.newsletterTitle", // "Subscribe to our Newsletter"
-    newsletterSubtitle: "footer.newsletterSubtitle", // "Get latest updates and offers"
-    newsletterPlaceholder: "footer.newsletterPlaceholder", // "Enter your email"
-    newsletterSubscribe: "footer.newsletterSubscribe", // "Subscribe"
-    newsletterNoThanks: "footer.newsletterNoThanks", // "No thanks"
-    newsletterSuccess: "footer.newsletterSuccess", // "You have successfully subscribed!"
-    newsletterError: "footer.newsletterError", // "Something went wrong. Please try again."
-    newsletterTerms: "footer.newsletterTerms", // "By subscribing, you agree to our"
-    newsletterPrivacyPolicy: "footer.newsletterPrivacyPolicy", // "Privacy Policy"
-    newsletterTermsOfService: "footer.newsletterTermsOfService", // "Terms of Service"
+    // Newsletter keys
+    newsletterTitle: "footer.newsletterTitle",
+    newsletterSubtitle: "footer.newsletterSubtitle",
+    newsletterPlaceholder: "footer.newsletterPlaceholder",
+    newsletterSubscribe: "footer.newsletterSubscribe",
+    newsletterNoThanks: "footer.newsletterNoThanks",
+    newsletterSuccess: "footer.newsletterSuccess",
+    newsletterError: "footer.newsletterError",
+    newsletterTerms: "footer.newsletterTerms",
+    newsletterPrivacyPolicy: "footer.newsletterPrivacyPolicy",
+    newsletterTermsOfService: "footer.newsletterTermsOfService",
   },
 
   // About section keys
