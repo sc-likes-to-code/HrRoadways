@@ -402,6 +402,22 @@ npm run server
 - **Development**: Backend API only on port `50001`
 - **Production** (`NODE_ENV=production`): Serves both API and built frontend from `/dist`
 
+### Testing the API
+
+**Health Check:**
+```bash
+curl http://localhost:50001/api/health
+```
+
+**Smart Route (Bus search):**
+```bash
+curl -X POST http://localhost:50001/api/smartRoute \
+  -H "Content-Type: application/json" \
+  -d '{"source": "Chandigarh", "destination": "Delhi"}'
+```
+
+📖 For comprehensive API documentation and more examples, see [`docs/curl_examples.md`](docs/curl_examples.md)
+
 <h1 align="center">Popular Places Repository</h1>
 <h4 align="center">
   A centralized repository to store and manage information about popular places across various locations.
