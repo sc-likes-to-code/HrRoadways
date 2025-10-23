@@ -52,10 +52,7 @@ root.render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <ErrorBoundary>
-        {/* ✅ Wrap App with Newsletter Context if needed */}
-         <NewsletterProvider> 
         <App />
-         </NewsletterProvider> 
       </ErrorBoundary>
     </ClerkProvider>
   </React.StrictMode>
