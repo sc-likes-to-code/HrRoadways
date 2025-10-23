@@ -366,22 +366,41 @@ HrRoadways/
    ```
 2. Navigate to the project directory and install dependencies:
 
-```
-  npm install
+```bash
+npm install
 ```
 
 3. Create a `.env` file in the root directory with your API keys (see Environment Variables section above)
 
-4. Run the backend server:
-```
-  npm run server
+### Frontend Development
+
+**Development mode** (hot reload):
+
+```bash
+npm run dev
 ```
 
-5. In a new terminal, run the development server to access the site locally:
+The app will open at `http://localhost:5173` (default Vite port).
 
+**Production mode** (served by backend):
+
+```bash
+npm run build
+NODE_ENV=production npm run server
 ```
-  npm run dev
+
+The app will be served at `http://localhost:50001` (or port specified in `.env`).
+
+### Backend Server
+
+Run the backend server for API features:
+
+```bash
+npm run server
 ```
+
+- **Development**: Backend API only on port `50001`
+- **Production** (`NODE_ENV=production`): Serves both API and built frontend from `/dist`
 
 <h1 align="center">Popular Places Repository</h1>
 <h4 align="center">
