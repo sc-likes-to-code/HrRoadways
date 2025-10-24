@@ -3,6 +3,9 @@ import axios from "axios";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import { validate } from '../utils/validator.js';
+import { smartRouteValidation } from '../validation/smartRouteValidation.js';
+import { AppError } from '../utils/errorHandler.js';
 
 dotenv.config();
 const router = express.Router();
@@ -10,13 +13,13 @@ const router = express.Router();
 // Path to Haryana.json (bus database)
 const dbPath = path.join(process.cwd(), "Databases/State_Database/Haryana.json");
 
-router.post("/", async (req, res) => {
+router.post("/", validate(smartRouteValidation), async (req, res, next) => {
   const { source, destination } = req.body;
 
   try {
     // Check if database file exists
     if (!fs.existsSync(dbPath)) {
-      return res.status(404).json({ message: "Database file not found" });
+      return next(new AppError("Database file not found", 404));
     }
 
     const db = JSON.parse(fs.readFileSync(dbPath, "utf-8"));
