@@ -184,7 +184,7 @@ HrRoadways/
 | Feature | Description |
 |---------|-------------|
 | 🔤 Unicode Support | Handles multilingual text seamlessly |
-| 🌐 Localization | Supports 13 Indian languages for wider reach |
+| 🌐 Localization | Supports 2 Indian languages for wider reach |
 | 🗂️ Language Files | Each language stored in separate JSON for scalability |
 | ⚡ Fast Switching | Toggle between languages instantly |
 | 🛠️ Easy Maintenance | Simple structure for adding new languages |
