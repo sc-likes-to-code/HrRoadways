@@ -149,17 +149,7 @@ HrRoadways/
 
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
   
-## Our Events - 
-<a href="https://www.elitecoders.xyz/events/1756104358418"><img src="https://github.com/user-attachments/assets/2e87bdb6-aa0d-42e6-a40c-fd00125d64c2"/></a>
 
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-  
-## 📢 Weekly Shoutouts 🎉
-| Profile | Name | Profile | Name | Profile | Name | Profile | Name |
-|---------|------|---------|------|---------|------|---------|------|
-| <a href="https://github.com/Keshav1605"><img src="https://github.com/Keshav1605.png" width="80" /></a> | [**Keshav1605**](https://github.com/Keshav1605) | <a href="https://github.com/Renu-code123"><img src="https://github.com/Renu-code123.png" width="80" /></a> | [**Soumyosish**](https://github.com/Renu-code123) | <a href="https://github.com/anushkasark08"><img src="https://github.com/anushkasark08.png" width="80" /></a> | [**anjaliitgit**](https://github.com/anushkasark08) | <a href="https://github.com/Aripilli-Bhavana"><img src="https://github.com/Aripilli-Bhavana.png" width="80" /></a> | [**Aripilli-Bhavana**](https://github.com/Aripilli-Bhavana) |
-
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 <h2 align="center">🌏 National Language Support</h2>
 
