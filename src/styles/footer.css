@@ -3,18 +3,21 @@
   color: #fff;
   padding: 2rem;
   position: relative;
+  overflow: hidden;
 }
 
+/* Overlay */
 .footer-bg-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
 
+/* Container */
 .footer-container {
   position: relative;
   z-index: 1;
@@ -22,6 +25,7 @@
   margin: auto;
 }
 
+/* Header */
 .footer-header {
   display: flex;
   align-items: center;
@@ -35,14 +39,31 @@
 
 .footer-logo-icon {
   margin-right: 0.5rem;
+  color: #1976d2;
 }
 
 .footer-title {
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
+/* Newsletter Section */
 .footer-newsletter {
   margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.footer-newsletter-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter-icon {
+  margin-right: 0.5rem;
+  color: #1976d2;
 }
 
 .footer-newsletter-form {
@@ -51,18 +72,28 @@
 }
 
 .footer-newsletter-input {
-  padding: 0.5rem;
+  padding: 0.6rem;
   margin-bottom: 0.5rem;
   border-radius: 4px;
   border: none;
+  outline: none;
 }
 
-.footer-newsletter-btn, .footer-newsletter-cancel {
+.footer-newsletter-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.footer-newsletter-btn,
+.footer-newsletter-cancel {
   margin-right: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .footer-newsletter-btn {
@@ -70,15 +101,32 @@
   color: #fff;
 }
 
+.footer-newsletter-btn:hover {
+  background-color: #0f62b5;
+  transform: scale(1.02);
+}
+
 .footer-newsletter-cancel {
   background-color: #555;
   color: #fff;
 }
 
-.footer-newsletter-status {
+.footer-newsletter-cancel:hover {
+  background-color: #444;
+}
+
+.footer-newsletter-terms {
+  font-size: 0.85rem;
+  color: #ccc;
   margin-top: 0.5rem;
 }
 
+.footer-newsletter-success {
+  color: #00c853;
+  font-weight: 500;
+}
+
+/* Sections */
 .footer-sections {
   display: flex;
   flex-wrap: wrap;
@@ -90,26 +138,108 @@
   min-width: 200px;
 }
 
-.footer-section-title {
-  font-weight: bold;
+.footer-section-header {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
+.footer-section-icon {
+  margin-right: 0.5rem;
+  color: #1976d2;
+}
+
+.footer-section-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Links */
 .footer-links {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-link {
   color: #fff;
   text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .footer-link:hover {
   color: #1976d2;
+  text-decoration: underline;
 }
 
+/* 🆕 Feedback Link Highlight */
+.footer-link[href="/feedback"] {
+  font-weight: 600;
+  color: #4da3ff;
+  border-left: 2px solid #1976d2;
+  padding-left: 6px;
+  transition: all 0.3s ease;
+}
+
+.footer-link[href="/feedback"]:hover {
+  color: #66b2ff;
+  border-left-color: #66b2ff;
+  text-decoration: underline;
+}
+
+/* Social Links */
+.footer-social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.footer-social-link:hover {
+  background: #1976d2;
+  transform: scale(1.1);
+}
+
+.footer-social-icon {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+}
+
+/* Bottom Section */
 .footer-bottom {
   margin-top: 2rem;
   text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-sections {
+    flex-direction: column;
+  }
+
+  .footer-newsletter-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-newsletter-btn,
+  .footer-newsletter-cancel {
+    margin-bottom: 0.5rem;
+  }
 }
