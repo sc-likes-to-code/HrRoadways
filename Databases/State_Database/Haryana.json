@@ -29,6 +29,30 @@
       "route": "Faridabad to Delhi",
       "eta": 35,
       "stops": ["Sector 15", "NIT", "ESI Hospital", "Badkal Mor", "New Delhi"]
+    },
+    {
+      "name": "EcoRoute Chandigarh Express",
+      "route": "Chandigarh to Delhi",
+      "eta": 50,
+      "stops": ["Sector 17", "Zirakpur", "Ambala Bypass", "Delhi Border", "Delhi"]
+    },
+    {
+      "name": "Green Line Gurgaon Service",
+      "route": "Gurgaon to Delhi",
+      "eta": 40,
+      "stops": ["Gurgaon Railway Station", "IFFCO Chowk", "MG Road", "Delhi"]
+    },
+    {
+      "name": "Solar Powered Hisar Route",
+      "route": "Hisar to Delhi",
+      "eta": 75,
+      "stops": ["Hisar", "Rohtak", "Bahadurgarh", "Delhi"]
+    },
+    {
+      "name": "Sustainable Panipat Link",
+      "route": "Panipat to Delhi",
+      "eta": 55,
+      "stops": ["Panipat", "Sonipat", "Delhi"]
     }
   ]
 }

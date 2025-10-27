@@ -1,0 +1,8 @@
+{
+  "default": {
+    "favoriteRoutes": [],
+    "preferredSpeed": "balanced",
+    "ecoPreference": false,
+    "travelHistory": []
+  }
+}
