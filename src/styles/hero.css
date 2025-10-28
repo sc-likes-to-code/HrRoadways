@@ -8,10 +8,18 @@
 .hero-header {
   position: relative;
   height: 24rem;
-  background-image: url('/Buses.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Background image for hero header */
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Overlay for the header */

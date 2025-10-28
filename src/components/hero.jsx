@@ -202,6 +202,13 @@ const Hero = () => {
     <div className="hero-container text-black dark:bg-gray-950 dark:text-white" ref={containerRef}>
       <div className="hero-header">
         <div className="hero-header-overlay" />
+        <img
+          src="/src/assets/Pinjore_Gardens.avif"
+          srcSet="/src/assets/Pinjore_Gardens.avif 480w, /src/assets/Pinjore_Gardens.avif 1024w"
+          sizes="(max-width: 480px) 480px, 1024px"
+          alt="Beautiful Pinjore Gardens showcasing Haryana's natural heritage"
+          className="hero-background-image"
+        />
         <div className="hero-header-content">
           <h1 className="hero-heading">{t("hero.heading")}</h1>
           <p className="hero-subheading">{t("hero.subheading")}</p>
