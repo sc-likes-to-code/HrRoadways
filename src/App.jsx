@@ -47,7 +47,7 @@ const NotFound = lazy(() => import('./components/NotFound'));
 const ToastTest = lazy(() => import('./components/ToastTest'));
 const FaqPage = lazy(() => import('./components/faq'));
 const TravelPackagesPage = lazy(() => import('./components/TravelPackagesPage'));
-const SmartRoute = lazy(() => import('./components/SmartRoute'));
+import ErrorBoundary from './components/ErrorBoundary';
 
 function BookingPageWrapper() {
 const location = useLocation();
@@ -74,7 +74,7 @@ Loading...
 <ScrollToTop />
 <Routes>
 <Route path='/' element={<Hero />} />
-<Route path="/travel-packages" element={<TravelPackagesPage />} />
+<Route path="/travel-packages" element={<ErrorBoundary><TravelPackagesPage /></ErrorBoundary>} />
 <Route path='/Available' element={<Available />} />
 <Route path='/about' element={<AboutUs />} />
 <Route path='/trip' element={<Trip />} />
