@@ -47,6 +47,7 @@ const NotFound = lazy(() => import('./components/NotFound'));
 const ToastTest = lazy(() => import('./components/ToastTest'));
 const FaqPage = lazy(() => import('./components/faq'));
 const TravelPackagesPage = lazy(() => import('./components/TravelPackagesPage'));
+const SmartRoute = lazy(() => import('./components/SmartRoute'));
 import ErrorBoundary from './components/ErrorBoundary';
 
 function BookingPageWrapper() {
