@@ -4,12 +4,18 @@ import {
   CloudRain, 
   Truck, 
   Wind,
-  Zap
+  Zap,
+  Bell,
+  BellOff
 } from 'lucide-react';
+import { useNotification } from '../contexts/NotificationContext';
+import { showNotification } from '../utils/notifications';
 
 const TrafficUpdates = () => {
   const [updates, setUpdates] = useState([]);
   const [isAnimating, setIsAnimating] = useState(true);
+  const { permission, preferences } = useNotification();
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
   const generateTrafficUpdates = () => {
     const possibleUpdates = [
@@ -70,6 +76,24 @@ const TrafficUpdates = () => {
     return () => clearInterval(updateInterval);
   }, []);
 
+  useEffect(() => {
+    // Check if notifications are enabled for traffic updates
+    setNotificationsEnabled(permission === 'granted' && preferences.traffic);
+  }, [permission, preferences]);
+
+  const handleNotificationToggle = () => {
+    if (permission === 'granted') {
+      // In a real implementation, this would update user preferences
+      showNotification('Traffic Updates', {
+        body: 'You will now receive traffic notifications',
+        icon: '/assets/icons/icon-192x192.png'
+      });
+    } else {
+      // Redirect to notification settings
+      window.location.href = '/notifications';
+    }
+  };
+
   return (
     <div className="relative bg-white/90 rounded-2xl shadow-2xl border border-blue-100/50 overflow-hidden dark:bg-gray-950 dark:text-white">
       {/* Animated background effect */}
@@ -84,8 +108,17 @@ const TrafficUpdates = () => {
             <Zap className="w-7 h-7 text-yellow-500 animate-pulse" />
             Live Traffic Updates
           </h2>
-          <div className="text-sm text-blue-700/70 font-medium">
-            {new Date().toLocaleTimeString()}
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={handleNotificationToggle}
+              className={`p-2 rounded-full ${notificationsEnabled ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              title={notificationsEnabled ? 'Disable notifications' : 'Enable notifications'}
+            >
+              {notificationsEnabled ? <Bell className="w-4 h-4" /> : <BellOff className="w-4 h-4" />}
+            </button>
+            <div className="text-sm text-blue-700/70 font-medium">
+              {new Date().toLocaleTimeString()}
+            </div>
           </div>
         </div>
 
