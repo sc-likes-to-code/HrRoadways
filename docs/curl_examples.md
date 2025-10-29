@@ -11,6 +11,7 @@ Comprehensive guide for testing the Haryana Roadways backend API using `curl` co
 - [API Endpoints](#api-endpoints)
   - [Health Check](#1-health-check)
   - [Smart Route Search](#2-smart-route-search)
+  - [Record Route Selection](#3-record-route-selection)
 - [Request/Response Details](#requestresponse-details)
 - [Common Errors](#common-errors)
 - [Advanced Usage](#advanced-usage)
@@ -91,7 +92,7 @@ curl http://localhost:50001/api/health
 
 ### 2. Smart Route Search
 
-**Purpose:** Find bus routes between two locations with optional travel time and distance data.
+**Purpose:** Find AI-powered bus routes between two locations with smart ranking and optional travel time/distance data.
 
 **Endpoint:**
 ```
@@ -107,7 +108,8 @@ Content-Type: application/json
 ```json
 {
   "source": "string",      // Required: Starting location
-  "destination": "string"  // Required: Destination location
+  "destination": "string", // Required: Destination location
+  "userId": "string"       // Optional: User ID for personalized recommendations (defaults to 'default')
 }
 ```
 
@@ -128,39 +130,28 @@ curl -X POST http://localhost:50001/api/smartRoute \
 {
   "routes": [
     {
-      "busNumber": "HR-51C-0123",
-      "busName": "Chandigarh Express",
-      "from": "Chandigarh",
-      "to": "Delhi",
-      "via": ["Ambala", "Karnal", "Panipat"],
-      "departureTime": "06:00 AM",
-      "arrivalTime": "10:30 AM",
-      "frequency": "Daily",
-      "fare": "₹250",
-      "busType": "AC Deluxe",
+      "busName": "Chandigarh to Delhi Express",
+      "travelTime": "4 hours 30 mins",
       "distance": "245 km",
-      "duration": "4 hours 30 mins"
+      "type": "Express",
+      "eta": 45,
+      "stops": ["Sector 17", "Sector 22", "Zirakpur", "Ambala", "Karnal", "Delhi"]
     },
     {
-      "busNumber": "HR-51D-0456",
-      "busName": "Morning Express",
-      "from": "Chandigarh",
-      "to": "Delhi",
-      "via": ["Ambala", "Panipat"],
-      "departureTime": "08:00 AM",
-      "arrivalTime": "12:00 PM",
-      "frequency": "Daily",
-      "fare": "₹200",
-      "busType": "Non-AC",
+      "busName": "EcoRoute Chandigarh Express",
+      "travelTime": "4 hours 50 mins",
       "distance": "245 km",
-      "duration": "4 hours"
+      "type": "Eco-Friendly",
+      "eta": 50,
+      "stops": ["Sector 17", "Zirakpur", "Ambala Bypass", "Delhi Border", "Delhi"]
     }
   ],
-  "totalRoutes": 2
+  "totalRoutesFound": 3,
+  "aiPowered": true
 }
 ```
 
-#### Example 2: Route with Multiple Via Points
+#### Example 2: Route Search with User ID
 
 **Request:**
 ```bash
@@ -168,7 +159,8 @@ curl -X POST http://localhost:50001/api/smartRoute \
   -H "Content-Type: application/json" \
   -d '{
     "source": "Hisar",
-    "destination": "Chandigarh"
+    "destination": "Chandigarh",
+    "userId": "user123"
   }'
 ```
 
@@ -177,21 +169,16 @@ curl -X POST http://localhost:50001/api/smartRoute \
 {
   "routes": [
     {
-      "busNumber": "HR-34A-0789",
-      "busName": "Hisar-Chandigarh Express",
-      "from": "Hisar",
-      "to": "Chandigarh",
-      "via": ["Jind", "Kurukshetra", "Ambala", "Panchkula"],
-      "departureTime": "05:30 AM",
-      "arrivalTime": "10:00 AM",
-      "frequency": "Daily",
-      "fare": "₹180",
-      "busType": "AC",
-      "distance": "195 km",
-      "duration": "4 hours 30 mins"
+      "busName": "Hisar to Rohtak Direct",
+      "travelTime": "N/A",
+      "distance": "N/A",
+      "type": "Standard",
+      "eta": 60,
+      "stops": ["Hisar Bus Stand", "Beri", "Tohana", "Jind", "Rohtak"]
     }
   ],
-  "totalRoutes": 1
+  "totalRoutesFound": 1,
+  "aiPowered": true
 }
 ```
 
@@ -211,8 +198,54 @@ curl -X POST http://localhost:50001/api/smartRoute \
 ```json
 {
   "routes": [],
-  "totalRoutes": 0,
-  "message": "No routes found between UnknownCity and AnotherUnknownCity"
+  "totalRoutesFound": 0,
+  "aiPowered": true
+}
+```
+
+### 3. Record Route Selection
+
+**Purpose:** Record a user's route selection for AI learning and personalization.
+
+**Endpoint:**
+```
+POST /api/smartRoute/select-route
+```
+
+**Request Headers:**
+```
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "userId": "string",      // Optional: User ID (defaults to 'default')
+  "routeName": "string",   // Required: Name of the selected route
+  "source": "string",      // Required: Starting location
+  "destination": "string"  // Required: Destination location
+}
+```
+
+#### Example: Record Route Selection
+
+**Request:**
+```bash
+curl -X POST http://localhost:50001/api/smartRoute/select-route \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user123",
+    "routeName": "Chandigarh to Delhi Express",
+    "source": "Chandigarh",
+    "destination": "Delhi"
+  }'
+```
+
+**Example Response:**
+```json
+{
+  "success": true,
+  "message": "Route selection recorded for personalization"
 }
 ```
 
@@ -226,18 +259,35 @@ curl -X POST http://localhost:50001/api/smartRoute \
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `busNumber` | string | Yes | Unique bus identification number |
 | `busName` | string | Yes | Display name of the bus service |
-| `from` | string | Yes | Starting location |
-| `to` | string | Yes | Final destination |
-| `via` | array[string] | No | Intermediate stops (if any) |
-| `departureTime` | string | Yes | Departure time (format: `HH:MM AM/PM`) |
-| `arrivalTime` | string | Yes | Arrival time (format: `HH:MM AM/PM`) |
-| `frequency` | string | Yes | Service frequency (e.g., "Daily", "Mon-Fri") |
-| `fare` | string | Yes | Ticket price in rupees |
-| `busType` | string | Yes | Bus category (AC, Non-AC, Deluxe, etc.) |
-| `distance` | string | No | Total distance (populated with Google Maps API) |
-| `duration` | string | No | Estimated travel time (populated with Google Maps API) |
+| `travelTime` | string | No | Estimated travel time (from Google Maps API) |
+| `distance` | string | No | Total distance (from Google Maps API) |
+| `type` | string | Yes | Route type (Express, Eco-Friendly, Local, Standard) |
+| `eta` | number | Yes | Estimated time of arrival in minutes |
+| `stops` | array[string] | Yes | List of intermediate stops |
+
+**Response Fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `routes` | array | Array of route objects (max 5, AI-ranked) |
+| `totalRoutesFound` | number | Total number of routes found before AI ranking |
+| `aiPowered` | boolean | Whether AI ranking was applied |
+
+### Route Selection Response Schema
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `success` | boolean | Whether the route selection was recorded |
+| `message` | string | Success or error message |
+
+### Google Maps Integration
+
+If `GOOGLE_MAPS_API_KEY` is configured in `.env`, the API automatically fetches:
+- **Distance**: Actual road distance between source and destination
+- **Duration**: Estimated travel time based on traffic conditions
+
+**Without Google Maps API:**
 
 ### Google Maps Integration
 
