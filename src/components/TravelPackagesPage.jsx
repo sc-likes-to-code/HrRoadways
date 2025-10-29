@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 // Let's assume you've hosted your new JSON file somewhere, or you can import it directly
 // For this example, let's use a direct import. You can replace with a fetch call.
 import packagesData from '../data/travel_packages.json';
-const TravelPackages = ({ isHindi }) => { // Receive isHindi prop
+const TravelPackages = () => {
   const { t } = useTranslation();
   const [packages, setPackages] = useState([]);
 
