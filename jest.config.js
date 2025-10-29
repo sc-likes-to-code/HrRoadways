@@ -10,7 +10,9 @@ export default {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.{js,jsx}',
-    '<rootDir>/src/**/*.{spec,test}.{js,jsx}'
+    '<rootDir>/src/**/*.{spec,test}.{js,jsx}',
+    '<rootDir>/libs/**/__tests__/**/*.{js,jsx}',
+    '<rootDir>/libs/**/*.{spec,test}.{js,jsx}'
   ],
   moduleDirectories: ['node_modules', 'src'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
