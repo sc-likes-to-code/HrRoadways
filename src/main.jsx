@@ -64,16 +64,18 @@ root.render(
 
 console.log('App render called');
 
-// Register Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then(registration => {
-        console.log('Service Worker registered: ', registration);
-      })
-      .catch(error => {
-        console.log('Service Worker registration failed: ', error);
-      });
-  });
-}
+// Register Service Worker (disabled for debugging)
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker
+//       .register('/service-worker.js')
+//       .then(registration => {
+//         console.log('Service Worker registered: ', registration);
+//       })
+//       .catch(error => {
+//         console.log('Service Worker registration failed: ', error);
+//       });
+//   });
+// }
+
+
