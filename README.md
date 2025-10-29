@@ -281,10 +281,6 @@ HrRoadways/
 │
 ├── Backend/                                # Main backend folder
 │   ├── src/
-│   ├── routes/                             # API routes
-│   │   └── notifications.js               # Push notification routes
-│   ├── utils/                              # Utility functions
-│   │   └── notificationEvents.js          # Notification event handlers
 │   ├── .env.sample                         # Example environment file
 │   ├── package.json
 │   └── package-lock.json
@@ -314,21 +310,14 @@ HrRoadways/
 ├── src/                                    # Frontend source code
 │   ├── assets/
 │   ├── components/                         # Reusable UI components
-│   │   ├── Notifications/                  # Notification components
-│   │   │   ├── NotificationSettings.jsx    # Notification settings UI
-│   │   │   └── NotificationTest.jsx        # Notification testing component
 │   ├── contexts/                           # React contexts
-│   │   └── NotificationContext.jsx         # Notification state management
 │   ├── data/                               # Static data files
 │   ├── hooks/                              # Custom React hooks
 │   ├── i18n/                               # Internationalization setup
 │   ├── services/                           # API and backend services
-│   │   └── notificationService.js          # Notification API client
 │   ├── store/                              # State management (Redux/Zustand/etc.)
 │   ├── styles/                             # CSS/Tailwind/Global styles
-│   │   └── NotificationSettings.css        # Notification component styles
 │   ├── utils/                              # Helper functions
-│   │   └── notifications.js                # Notification utility functions
 │   ├── App.jsx                             # Main React App component
 │   ├── index.css
 │   ├── main.jsx                            # Entry point
@@ -341,7 +330,6 @@ HrRoadways/
 ├── CODE_OF_CONDUCT.md                      # Contributor behavior rules
 ├── CONTRIBUTION_GUIDELINES.md              # How to contribute
 ├── LICENSE                                 # Open-source license
-├── PUSH_NOTIFICATIONS.md                   # Push notifications documentation
 ├── README.md                               # Project documentation
 ├── ROUTES_GUIDE.md                         # API routes documentation
 ├── TranslationLink.md                      # Translation related guide
@@ -487,10 +475,233 @@ Here is an example of how to add a location:
 }
 ```
 
+````markdown
+<h1 align="center">Contributing & Translation Guidelines</h1>
+<h4 align="center">
+  Guidelines for contributing to the repository, ensuring Hindi translations, and keeping the codebase updated.
+</h4>
+
+## Contributing
+
+If you are adding content to the site or creating new pages, please:
+
+- Apply logic for Hindi translation and add translations for all words.
+- Use PNG or JPG files for minimal size and always compress images.
+- Ensure that your forked repository is up to date before submitting a pull request.
+
+### Steps for Contributing
+
+#### 1. Fork the Repository:
+Click on the **Fork** button at the top right of the repository page.
+
+#### 2. Clone the Forked Repository:
+```bash
+git clone https://github.com/your-username/HrRoadways.git
 ````
 
+#### 3. Create a New Branch:
+
+```bash
+git checkout -b your-branch-name
 ```
 
+#### 4. Make Your Changes:
+
+* Apply the Hindi translation logic.
+* Compress images before uploading.
+
+#### 5. Commit Your Changes:
+
+```bash
+git add .
+git commit -m "Describe your changes"
 ```
 
+#### 6. Push to the Branch:
+
+```bash
+git push origin your-branch-name
 ```
+
+#### 7. Create a Pull Request:
+
+Go to the original repository and click **New Pull Request**.
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## Keeping Your Fork Updated
+
+Before making a pull request, ensure that your forked repository is up to date.
+
+#### Add Remote Upstream:
+
+```bash
+git remote add upstream https://github.com/NishantRana07/HrRoadways.git
+```
+
+#### Fetch Upstream Changes:
+
+```bash
+git fetch upstream
+```
+
+#### Merge Changes into Main:
+
+```bash
+git checkout main
+git merge upstream/main
+```
+
+#### Push Changes to Your Fork:
+
+```bash
+git push origin main
+```
+
+By following these steps, your pull request will be based on the latest code.
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+## Translation Documentation
+
+### Overview
+
+The HrRoadways project supports bilingual functionality (English & Hindi). This is achieved through translation logic built into components.
+
+### Implementation
+
+#### Translation Data Structure:
+
+Each component maintains translations for both languages:
+
+```javascript
+const translations = {
+  en: { heading: "Your English Heading" },
+  hi: { heading: "आपका हिंदी शीर्षक" },
+};
+```
+
+#### State Management:
+
+A state variable (`isHindi`) toggles between languages.
+
+```javascript
+const [isHindi, setIsHindi] = useState(false);
+const currentLanguage = isHindi ? translations.hi : translations.en;
+```
+
+#### Toggle Function:
+
+```javascript
+const handleToggleLanguage = () => setIsHindi(!isHindi);
+```
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+### Adding Translations to New Components
+
+1. **Define Translations:**
+
+   ```javascript
+   const translations = {
+     en: { description: "Your English Description" },
+     hi: { description: "आपका हिंदी विवरण" },
+   };
+   ```
+
+2. **Use the Translations:**
+
+   ```javascript
+   <p>{currentLanguage.description}</p>
+   ```
+
+---
+
+### Example: Hero.jsx
+
+```javascript
+const translations = {
+  en: {
+    heading: "Haryana Roadways - Your Own Bus Service",
+    button: "Search Buses",
+  },
+  hi: {
+    heading: "हरियाणा रोडवेज - आपकी अपनी बस सेवा",
+    button: "बसें खोजें",
+  },
+};
+
+const currentLanguage = isHindi ? translations.hi : translations.en;
+
+return (
+  <div>
+    <h1>{currentLanguage.heading}</h1>
+    <button>{currentLanguage.button}</button>
+  </div>
+);
+```
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
+## Screenshots
+<img width="1910" height="828" alt="Screenshot 2025-10-11 131213" src="https://github.com/user-attachments/assets/b286a143-c5db-45d5-88ce-de7a83ce0f80" />
+
+<img width="1711" height="718" alt="Screenshot 2025-10-11 131235" src="https://github.com/user-attachments/assets/4361b2e0-1e8a-45d9-bbe0-11c046c967a6" />
+
+ <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+ 
+## 🐞 Troubleshooting 
+
+App won't start (dev)
+- Check Node version (use Node 16+).
+- Run npm install in repo root (or frontend folder if separated).
+- Ensure dev server port not in use. Kill conflicting process or change port.
+- Missing translations or UI shows keys
+
+- Confirm locale JSON files exist under src/i18n/locales/.
+- Restart dev server after adding new keys.
+- Use useTranslation() properly and call t('namespace.key').
+- Data not loading (API/DB)
+- Verify the JSON/DB endpoint is reachable (check CORS).
+- If using a hosted JSON blob, ensure the URL is correct and public.
+- Inspect browser console / network tab for 4xx/5xx responses.
+- Images fail to upload or display
+- Confirm storage URL/CORS settings.
+- Check file size limits and client-side compression.
+- Language switch not persisting
+
+- Make sure selected language is saved to localStorage or user profile.
+- Ensure state is read on app init before rendering locale-dependent components.
+- Build/Production issues
+- Verify environment variables for production (API base URL, any keys).
+- Run a local production build (npm run build) and serve the dist to reproduce.
+
+ <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+ 
+## Best Practices
+
+* **Always apply translation logic** for new content/pages.
+* **Use PNG/JPG** files and compress images before uploading.
+* **Keep your fork updated** before submitting PRs.
+
+
+
+
+## Contributor
+
+A heartfelt thank you to all the contributors who have dedicated their time and effort to make this project a success.  
+Your contributions—whether it’s code, design, testing, or documentation—are truly appreciated! 🚀
+
+#### Thanks to all the wonderful contributors 💖
+
+<a href="https://github.com/NishantRana07/HrRoadways/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NishantRana07/HrRoadways" />
+</a>
+
+See full list of contribution from contributor [Contributor Graph](https://github.com/NishantRana07/HrRoadways/graphs/contributors)
+
+
+
+
+
+</div>

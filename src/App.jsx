@@ -10,8 +10,6 @@ useLocation,
 Navigate, 
 } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
-import { NotificationProvider } from './contexts/NotificationContext'; // Added NotificationProvider
-import TestNotificationButton from './components/Notifications/TestNotificationButton'; // Added TestNotificationButton
 import Navigation from './components/nav';
 import Footer from './components/footer';
 import Header from './components/Header';
@@ -50,7 +48,6 @@ const ToastTest = lazy(() => import('./components/ToastTest'));
 const FaqPage = lazy(() => import('./components/faq'));
 const TravelPackagesPage = lazy(() => import('./components/TravelPackagesPage'));
 const SmartRoute = lazy(() => import('./components/SmartRoute'));
-const NotificationSettings = lazy(() => import('./components/Notifications/NotificationSettings')); // Added NotificationSettings
 
 function BookingPageWrapper() {
 const location = useLocation();
@@ -64,11 +61,9 @@ return (
 <ThemeWrapper>
 <div className="min-h-screen bg-white text-black dark:bg-gray-950 dark:text-white">
 <LanguageProvider>
-<NotificationProvider>
 <Router>
 <Header />
 <Navigation />
-<TestNotificationButton />
 <Suspense
 fallback={
 <div style={{ padding: '2rem', textAlign: 'center' }}>
@@ -108,7 +103,6 @@ Loading...
 <Route path='/smart-route' element={<SmartRoute />} />
 <Route path='/login' element={<Login />} />
 <Route path='/mybookings' element={<MyBookings />} />
-<Route path='/notifications' element={<NotificationSettings />} />
 <Route path='/yash' element={<h1>Yash&apos;s Page</h1>} />
 <Route path='/toast-test' element={<ToastTest />} />
 <Route path='*' element={<NotFound />} />
@@ -129,7 +123,6 @@ pauseOnHover
 theme="colored"
 />
 </Router>
-</NotificationProvider>
 </LanguageProvider>
 </div>
 </ThemeWrapper>
