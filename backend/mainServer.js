@@ -6,9 +6,11 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import axios from 'axios';
 import smartRouteRouter from './routes/smartRoute.js';
+import notificationsRouter from './routes/notifications.js'; // Added notifications route
 import { globalErrorHandler } from './middleware/errorMiddleware.js';
 import { AppError } from './utils/errorHandler.js';
 import { setupSecurity, corsOptions } from './config/security.js';
+import { sendBusDelayNotification, sendRouteCancellationNotification, sendTrafficUpdateNotification } from './utils/notificationEvents.js'; // Added notification events
 
 // ES modules don't have __dirname, so we create it
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +35,58 @@ if (process.env.NODE_ENV === 'production') {
 
 // Routes
 app.use('/api/smartRoute', smartRouteRouter);
+app.use('/api/notifications', notificationsRouter); // Added notifications route
+
+// --- Notification Simulation Endpoints ---
+// Endpoint to simulate bus delay
+app.post("/api/simulate/delay", async (req, res) => {
+  const { route, delay, estimatedTime } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendBusDelayNotification(route, delay, estimatedTime);
+    
+    res.json({ message: 'Delay notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending delay notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});
+
+// Endpoint to simulate route cancellation
+app.post("/api/simulate/cancellation", async (req, res) => {
+  const { route, reason } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendRouteCancellationNotification(route, reason);
+    
+    res.json({ message: 'Cancellation notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending cancellation notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});
+
+// Endpoint to simulate traffic update
+app.post("/api/simulate/traffic", async (req, res) => {
+  const { route, update, impact } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendTrafficUpdateNotification(route, update, impact);
+    
+    res.json({ message: 'Traffic update notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending traffic notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
 
 // Handle undefined routes
 app.all('*', (req, res, next) => {
@@ -41,29 +95,6 @@ app.all('*', (req, res, next) => {
 
 // Global error handling middleware
 app.use(globalErrorHandler);
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-// Serve React app for any non-API routes (if in production)
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
-}
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something went wrong!' });
-});
-
-// Handle 404 for undefined routes
-app.use('*', (req, res) => {
-  res.status(404).json({ message: 'Route not found' });
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

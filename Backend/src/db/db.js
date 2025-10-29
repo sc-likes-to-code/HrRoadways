@@ -1,16 +1,13 @@
- import {} from 'dotenv/config';
-   
-import mongoose from "mongoose";
-import { DB_NAME } from "../constants.js";
+import {} from 'dotenv/config';
 
 const connectDB = async () => {
   try {
-    const connectionInstance = await mongoose.connect(
-      `${process.env.MONGODB_URI}/${DB_NAME}`
-    );
-    console.log(`✅ MongoDB connected! Host: ${connectionInstance.connection.host}`);
+    // For this application, we're using JSON file storage instead of MongoDB
+    // So we'll just log a message instead of connecting to MongoDB
+    console.log('✅ Using file-based storage instead of MongoDB');
+    return { connection: { host: 'file-system' } };
   } catch (error) {
-    console.error("❌ MongoDB connection error", error);
+    console.error("❌ Database setup error", error);
     process.exit(1);
   }
 };

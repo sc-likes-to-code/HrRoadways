@@ -7,6 +7,7 @@ import axios from "axios";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import { sendBusDelayNotification, sendRouteCancellationNotification, sendTrafficUpdateNotification } from './utils/notificationEvents.js'; // Added notification events
 
 dotenv.config();
 const app = express();
@@ -54,12 +55,6 @@ app.post("/api/bus/:busId/update", (req, res) => {
 
   io.emit("busUpdate", bus); // notify all connected clients
   res.json({ success: true });
-});
-
-// Real-time socket connection
-io.on("connection", (socket) => {
-  console.log("🟢 New client connected");
-  socket.emit("initialData", Object.values(buses));
 });
 
 // --- Smart Route Finder (Google Maps + Haryana.json) ---
@@ -114,6 +109,75 @@ app.post("/api/smart-routes", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error finding smart routes", error: error.message });
+  }
+});
+
+// --- Notification Simulation Endpoints ---
+// Endpoint to simulate bus delay
+app.post("/api/simulate/delay", async (req, res) => {
+  const { route, delay, estimatedTime } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendBusDelayNotification(route, delay, estimatedTime);
+    
+    // Emit to all connected socket clients
+    io.emit('notification', {
+      type: 'delay',
+      route,
+      delay,
+      estimatedTime
+    });
+    
+    res.json({ message: 'Delay notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending delay notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});
+
+// Endpoint to simulate route cancellation
+app.post("/api/simulate/cancellation", async (req, res) => {
+  const { route, reason } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendRouteCancellationNotification(route, reason);
+    
+    // Emit to all connected socket clients
+    io.emit('notification', {
+      type: 'cancellation',
+      route,
+      reason
+    });
+    
+    res.json({ message: 'Cancellation notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending cancellation notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
+  }
+});
+
+// Endpoint to simulate traffic update
+app.post("/api/simulate/traffic", async (req, res) => {
+  const { route, update, impact } = req.body;
+  
+  try {
+    // Send notification to all subscribers
+    await sendTrafficUpdateNotification(route, update, impact);
+    
+    // Emit to all connected socket clients
+    io.emit('notification', {
+      type: 'traffic',
+      route,
+      update,
+      impact
+    });
+    
+    res.json({ message: 'Traffic update notification sent successfully' });
+  } catch (error) {
+    console.error('Error sending traffic notification:', error);
+    res.status(500).json({ error: 'Failed to send notification' });
   }
 });
 
