@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
   
   <h1 align="center">HrRoadways</h1>
-  
+  <p><center>Follow the Maintainer - <a href="linkedin.com/in/nishantrana07">Nishant Rana</a></center></p>
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 <p align="center">
   <img src="https://img.shields.io/badge/BUILD-grey?style=for-the-badge" />
@@ -149,17 +149,7 @@ HrRoadways/
 
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
   
-## Our Events - 
-<a href="https://www.elitecoders.xyz/events/1756104358418"><img src="https://github.com/user-attachments/assets/2e87bdb6-aa0d-42e6-a40c-fd00125d64c2"/></a>
 
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-  
-## 📢 Weekly Shoutouts 🎉
-| Profile | Name | Profile | Name | Profile | Name | Profile | Name |
-|---------|------|---------|------|---------|------|---------|------|
-| <a href="https://github.com/Keshav1605"><img src="https://github.com/Keshav1605.png" width="80" /></a> | [**Keshav1605**](https://github.com/Keshav1605) | <a href="https://github.com/Renu-code123"><img src="https://github.com/Renu-code123.png" width="80" /></a> | [**Soumyosish**](https://github.com/Renu-code123) | <a href="https://github.com/anushkasark08"><img src="https://github.com/anushkasark08.png" width="80" /></a> | [**anjaliitgit**](https://github.com/anushkasark08) | <a href="https://github.com/Aripilli-Bhavana"><img src="https://github.com/Aripilli-Bhavana.png" width="80" /></a> | [**Aripilli-Bhavana**](https://github.com/Aripilli-Bhavana) |
-
-  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 <h2 align="center">🌏 National Language Support</h2>
 
@@ -194,7 +184,7 @@ HrRoadways/
 | Feature | Description |
 |---------|-------------|
 | 🔤 Unicode Support | Handles multilingual text seamlessly |
-| 🌐 Localization | Supports 13 Indian languages for wider reach |
+| 🌐 Localization | Supports 2 Indian languages for wider reach |
 | 🗂️ Language Files | Each language stored in separate JSON for scalability |
 | ⚡ Fast Switching | Toggle between languages instantly |
 | 🛠️ Easy Maintenance | Simple structure for adding new languages |
@@ -366,22 +356,57 @@ HrRoadways/
    ```
 2. Navigate to the project directory and install dependencies:
 
-```
-  npm install
+```bash
+npm install
 ```
 
 3. Create a `.env` file in the root directory with your API keys (see Environment Variables section above)
 
-4. Run the backend server:
-```
-  npm run server
+### Frontend Development
+
+**Development mode** (hot reload):
+
+```bash
+npm run dev
 ```
 
-5. In a new terminal, run the development server to access the site locally:
+The app will open at `http://localhost:5173` (default Vite port).
 
+**Production mode** (served by backend):
+
+```bash
+npm run build
+NODE_ENV=production npm run server
 ```
-  npm run dev
+
+The app will be served at `http://localhost:50001` (or port specified in `.env`).
+
+### Backend Server
+
+Run the backend server for API features:
+
+```bash
+npm run server
 ```
+
+- **Development**: Backend API only on port `50001`
+- **Production** (`NODE_ENV=production`): Serves both API and built frontend from `/dist`
+
+### Testing the API
+
+**Health Check:**
+```bash
+curl http://localhost:50001/api/health
+```
+
+**Smart Route (Bus search):**
+```bash
+curl -X POST http://localhost:50001/api/smartRoute \
+  -H "Content-Type: application/json" \
+  -d '{"source": "Chandigarh", "destination": "Delhi"}'
+```
+
+📖 For comprehensive API documentation and more examples, see [`docs/curl_examples.md`](docs/curl_examples.md)
 
 <h1 align="center">Popular Places Repository</h1>
 <h4 align="center">

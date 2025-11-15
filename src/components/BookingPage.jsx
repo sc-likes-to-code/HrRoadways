@@ -5,7 +5,8 @@ import {
   FaClock, 
   FaRupeeSign, 
   FaPhone, 
-  FaEnvelope 
+  FaEnvelope,
+  FaSpinner
 } from 'react-icons/fa';
 import 'tailwindcss/tailwind.css';
 
@@ -76,6 +77,7 @@ const BookingPage = ({ selectedBus }) => {
   const [passengerDetails, setPassengerDetails] = useState([]);
   const [contactInfo, setContactInfo] = useState({ phone: '', email: '' });
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Initialize 60 seats on mount
   useEffect(() => {
@@ -173,13 +175,18 @@ const BookingPage = ({ selectedBus }) => {
   };
 
   // Navigate to the BusCard page (ticket display) using the "/card" route
-  const handleProceed = () => {
+  const handleProceed = async () => {
     // Check if at least one seat is selected, and associated passenger details exist.
     if (selectedSeats.length === 0 || passengerDetails.length === 0) {
       alert("Please select at least one seat and enter passenger details.");
       return;
     }
     if (validateForm()) {
+      setIsLoading(true);
+      
+      // Simulate processing time for booking
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       const seatCost = selectedBus?.Price ? parseSeatCost(selectedBus.Price) : 900;
       const baseFare = selectedSeats.length * seatCost;
       const tax = baseFare * 0.18;
@@ -197,6 +204,7 @@ const BookingPage = ({ selectedBus }) => {
         contactInfo: contactInfo
       };
       navigate("/card", { state: { bookingInfo } });
+      setIsLoading(false);
     }
   };
 
@@ -346,9 +354,17 @@ const BookingPage = ({ selectedBus }) => {
           <div className="mt-6">
             <button 
               onClick={handleProceed}
-              className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-800 transform hover:scale-105 transition duration-300 shadow-md"
+              disabled={isLoading}
+              className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-800 transform hover:scale-105 transition duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Proceed with Booking
+              {isLoading ? (
+                <>
+                  <FaSpinner className="animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                'Proceed with Booking'
+              )}
             </button>
           </div>
         </section>

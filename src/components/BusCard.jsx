@@ -36,7 +36,9 @@ function BusCard({ isHindi = false }) {
     >
       {/* Bus Details */}
       <div className="border-b pb-4 dark:bg-gray-950 dark:text-white">
-        <h1 className="text-2xl font-bold text-gray-800">{busName}</h1>
+        <h1 className="text-2xl font-bold text-gray-800" aria-label={`Bus name: ${busName}`}>
+          {busName}
+        </h1>
         <p className="text-sm text-gray-600">Bus Number: {busNumber}</p>
         <p className="mt-2 text-gray-700">
           <strong>From:</strong> {from} <span className="mx-2">&rarr;</span> <strong>To:</strong> {to}
@@ -77,13 +79,13 @@ function BusCard({ isHindi = false }) {
       <div className="my-4">
         <h2 className="text-xl font-semibold text-gray-800 mb-2 dark:bg-gray-950 dark:text-white">Fare Summary</h2>
         <div className="space-y-1">
-          <p className="text-gray-800">
+          <p className="text-gray-800" aria-label={`Base fare: ${baseFare} rupees`}>
             <strong>Base Fare:</strong> ₹{baseFare}
           </p>
-          <p className="text-gray-800">
+          <p className="text-gray-800" aria-label={`Tax amount: ${tax.toFixed(2)} rupees`}>
             <strong>Tax (18%):</strong> ₹{tax.toFixed(2)}
           </p>
-          <p className="text-gray-800 text-xl font-bold">
+          <p className="text-gray-800 text-xl font-bold" aria-label={`Total fare: ${totalFare.toFixed(2)} rupees`}>
             <strong>Total Fare:</strong> ₹{totalFare.toFixed(2)}
           </p>
         </div>
@@ -105,6 +107,7 @@ function BusCard({ isHindi = false }) {
         <motion.button
           whileHover={{ scale: 1.05 }}
           className="px-6 py-3 bg-blue-600 text-white rounded-full focus:outline-none"
+          aria-label="Confirm and download bus ticket"
         >
           Confirm Ticket
         </motion.button>

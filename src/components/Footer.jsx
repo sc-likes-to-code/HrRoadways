@@ -2,35 +2,32 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Bus, MapPin, Clock, Globe, Share, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import "../styles/footer.css";
+import "../styles/footer.css"; // make sure this path is correct
 import { socialMediaLinks } from "../utils/translationKeyMap";
 
 function Footer() {
   const { t } = useTranslation();
+
+  // Current time & date
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Newsletter state
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  // 🟩 ADD HERE — Newsletter local state
-  const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    const timeInterval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+    const timeInterval = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timeInterval);
   }, []);
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-
     if (!email) {
       setSubscriptionStatus(t("newsletter.enterEmail"));
       return;
     }
-
     if (!/\S+@\S+\.\S+/.test(email)) {
       setSubscriptionStatus(t("newsletter.invalidEmail"));
       return;
@@ -40,12 +37,10 @@ function Footer() {
     setSubscriptionStatus("");
 
     try {
-      const API_BASE_URL = 'http://localhost:8000';
+      const API_BASE_URL = "http://localhost:8000";
       const response = await fetch(`${API_BASE_URL}/api/newsletter/subscribe`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
 
@@ -54,11 +49,12 @@ function Footer() {
       if (response.ok) {
         setSubscriptionStatus(t("newsletter.success"));
         setEmail("");
+        setSubscribed(true);
       } else {
         setSubscriptionStatus(data.message || t("newsletter.error"));
       }
     } catch (error) {
-      console.error('Newsletter subscription error:', error);
+      console.error("Newsletter subscription error:", error);
       setSubscriptionStatus(t("newsletter.error"));
     } finally {
       setIsLoading(false);
@@ -66,8 +62,10 @@ function Footer() {
   };
 
   return (
-    <footer className="footer w-full">
+    <footer className="footer">
       <div className="footer-bg-overlay" />
+
+      {/* Time & Date */}
       <div className="footer-time">
         <div className="footer-time-content">
           <Globe className="footer-time-icon" />
@@ -80,6 +78,7 @@ function Footer() {
       </div>
 
       <div className="footer-container">
+        {/* Header */}
         <div className="footer-header">
           <div className="footer-logo">
             <Bus className="footer-logo-icon" />
@@ -87,15 +86,20 @@ function Footer() {
           </div>
         </div>
 
-        {/* 🟩 ADD HERE — Newsletter Subscription Section */}
+        {/* Newsletter */}
         <div className="footer-newsletter">
           <div className="footer-newsletter-header">
             <Mail className="footer-newsletter-icon" />
-            <h3>{t("footer.newsletterTitle") || "Subscribe to our Newsletter"}</h3>
+            <h3>
+              {t("footer.newsletterTitle") || "Subscribe to our Newsletter"}
+            </h3>
           </div>
 
           {!subscribed ? (
-            <form onSubmit={handleSubscribe} className="footer-newsletter-form">
+            <form
+              onSubmit={handleNewsletterSubmit}
+              className="footer-newsletter-form"
+            >
               <input
                 type="email"
                 placeholder={t("footer.emailPlaceholder") || "Enter your email"}
@@ -105,8 +109,14 @@ function Footer() {
                 className="footer-newsletter-input"
               />
               <div className="footer-newsletter-buttons">
-                <button type="submit" className="footer-newsletter-btn">
-                  {t("footer.subscribe") || "Subscribe"}
+                <button
+                  type="submit"
+                  className="footer-newsletter-btn"
+                  disabled={isLoading}
+                >
+                  {isLoading
+                    ? t("newsletter.subscribing")
+                    : t("footer.subscribe")}
                 </button>
                 <button
                   type="button"
@@ -124,18 +134,18 @@ function Footer() {
                 and{" "}
                 <Link to="/terms" className="footer-link">
                   {t("footer.termsOfService") || "Terms of Service"}
-                </Link>.
+                </Link>
+                .
               </p>
             </form>
           ) : (
             <p className="footer-newsletter-success">
-              {t("footer.subscribedMessage") ||
-                "Thank you for subscribing! You'll hear from us soon."}
+              {t("footer.subscribedMessage") || "Thank you for subscribing!"}
             </p>
           )}
         </div>
-        {/* 🟩 Newsletter section ends here */}
 
+        {/* Footer Links */}
         <div className="footer-sections">
           {[
             {
@@ -168,69 +178,10 @@ function Footer() {
                 { label: t("nav.bestrides"), to: "/bestrides" },
               ],
             },
-            // New Newsletter Section
-            {
-              title: t("newsletter.title"),
-              icon: Mail,
-              customContent: (
-                <div className="footer-newsletter">
-                  <p className="footer-newsletter-description">
-                    {t("newsletter.description")}
-                  </p>
-                  <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
-                    <div className="footer-newsletter-input-group">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder={t("newsletter.enterEmail")}
-                        className="footer-newsletter-input"
-                        disabled={isLoading}
-                      />
-                      <button
-                        type="submit"
-                        className="footer-newsletter-button"
-                        disabled={isLoading}
-                      >
-                        {isLoading ? t("newsletter.subscribing") : t("newsletter.subscribe")}
-                      </button>
-                    </div>
-                    {subscriptionStatus && (
-                      <p className={`footer-newsletter-status ${subscriptionStatus === t("newsletter.success")
-                          ? "footer-newsletter-status-success"
-                          : "footer-newsletter-status-error"
-                        }`}>
-                        {subscriptionStatus}
-                      </p>
-                    )}
-                  </form>
-                </div>
-              ),
-            },
             {
               title: t("footer.followUs"),
               icon: Share,
-              links: [],
-            },
-          ].map((section, index) => (
-            <div key={index} className="footer-section">
-              <div className="footer-section-header">
-                <section.icon className="footer-section-icon" />
-                <h4 className="footer-section-title">{section.title}</h4>
-              </div>
-              {section.customContent ? (
-                section.customContent
-              ) : section.links.length > 0 ? (
-                <ul className="footer-links">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <Link to={link.to} className="footer-link">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
+              customContent: (
                 <div className="footer-social-links">
                   {socialMediaLinks.map(
                     ({ Icon, color, href, target, rel, label }, idx) => (
@@ -247,6 +198,26 @@ function Footer() {
                     )
                   )}
                 </div>
+              ),
+            },
+          ].map((section, index) => (
+            <div key={index} className="footer-section">
+              <div className="footer-section-header">
+                <section.icon className="footer-section-icon" />
+                <h4 className="footer-section-title">{section.title}</h4>
+              </div>
+              {section.customContent ? (
+                section.customContent
+              ) : (
+                <ul className="footer-links">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link to={link.to} className="footer-link">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           ))}
