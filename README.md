@@ -1,7 +1,7 @@
-
+ 
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
   
-  <h1 align="center">HrRoadways</h1>
+  <h1 align="center">HrRoadways</h1>  
   <p><center>Follow the Maintainer - <a href="linkedin.com/in/nishantrana07">Nishant Rana</a></center></p>
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 <p align="center">
@@ -39,97 +39,80 @@ Provide an inclusive, multilingual platform that:
 
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
   
-## Why HrRoadways?
+## 💎 Why HrRoadways?
 
-HrRoadways solves everyday transit friction by making government bus information easy to find, understand, and use.
+| Feature | Solution Provided |
+| :--- | :--- |
+| **Multilingual** | Native support for 13+ Indian languages (English/Hindi focus). |
+| **Performance** | Optimized React + Vite stack for low-bandwidth mobile devices. |
+| **Data Integrity** | Smart Route logic powered by authoritative JSON datasets & Google Maps. |
+| **Community** | Open-source places repository for local city updates. |
+| **Privacy** | Zero tracking, minimal data collection approach. |
 
-- Problem solved: consolidates routes, timings, and live updates into one lightweight web app so commuters don’t need multiple sources.
-- Multilingual by design: supports 13 Indian languages to serve diverse users across regions.
-- Lightweight & fast: built with React + Vite and optimized for low bandwidth and mobile devices.
-- Reliable data focus: integrates authoritative route/schedule sources and simple JSON-backed datasets for quick iteration.
-- Accessibility & inclusivity: semantic UI, keyboard navigation, and language-first UX reduce barriers for all users.
-- Community-driven: contributors can add places, translations, and local corrections to improve coverage.
-- Privacy-conscious: no unnecessary tracking; minimal data collection with clear retention practices.
-- Production-ready: easy to deploy, monitor, and scale with standard tooling (CI, hosting, backups).
-
- <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
  <!-- Project Structure as HTML for README.md -->
 <h2>📁 Project Structure</h2>
 <pre>
 HrRoadways/
-├── .github/
-├── .vscode/
-├── Backend/
-├── Databases/
-│   └── State_Database/
-├── backend/
-│   ├── routes/
-│   └── mainServer.js
-├── libs/
-├── public/
-├── src/
-│   ├── components/
-│   └── assets/
-├── Places/
+├── .github/                # GitHub Actions & PR/Issue templates
+├── backend/                # Node.js + Express API logic
+│   ├── routes/             # API endpoints (SmartRoute, Health)
+│   ├── libs/               # Shared backend utilities
+│   └── mainServer.js       # Express entry point
+├── Databases/              # Centralized JSON storage
+│   └── State_Database/     # State-specific bus schedules (Haryana.json)
+├── Places/                 # Community-driven location data
 │   └── Location/
-│       └── Location.json
-├── .env
-├── .gitignore
-├── CLERK_SETUP.md
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTION_GUIDELINES.md
-├── LICENSE
-├── README.md
-├── ROUTES_GUIDE.md
-├── TranslationLink.md
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── vercel.json
-├── vite.config.js
+│       └── Location.json   # Metadata for popular landmarks
+├── public/                 # Static assets (Favicon, Manifest)
+├── src/                    # Frontend React source code
+│   ├── components/         # Reusable UI (Hero, Navbar, Sidebar)
+│   ├── i18n/               # Translation locales & config
+│   ├── assets/             # Images & Compressed visuals
+│   ├── hooks/              # Custom React logic (useTranslation)
+│   └── App.jsx             # Main application wrapper
+├── .env.example            # Template for API keys
+├── vercel.json             # Deployment configurations
+└── vite.config.js          # Frontend build tool config
 </pre>
 
 
-<ul>
-  <li><b>.github/</b>: GitHub Actions workflows, issue templates, and CI/CD configuration</li>
-  <li><b>.vscode/</b>: Visual Studio Code workspace settings and extensions</li>
-  <li><b>Backend/</b>: (May be legacy or alternative backend logic; clarify in your repo)</li>
-  <li><b>Databases/State_Database/</b>: State-specific bus route and schedule JSON data</li>
-  <li><b>backend/</b>: Node.js + Express backend code (API logic & routing)</li>
-  <li><b>libs/</b>: Shared utility libraries and helper modules</li>
-  <li><b>public/</b>: Static files (images, favicon, manifest) served at root</li>
-  <li><b>src/components/</b>: React UI components for frontend</li>
-  <li><b>src/assets/</b>: Images, icons, and other static frontend resources</li>
-  <li><b>Places/Location/Location.json</b>: JSON files with details about popular places/cities</li>
-  <li><b>.env</b>: Environment variables for secrets or API keys (not tracked in git)</li>
-  <li><b>.gitignore</b>: Specifies files/folders git should ignore</li>
-  <li><b>CLERK_SETUP.md</b>: Clerk authentication setup instructions</li>
-  <li><b>CODE_OF_CONDUCT.md</b>: Contributor behavior standards and policies</li>
-  <li><b>CONTRIBUTION_GUIDELINES.md</b>: Steps and etiquette for contributing</li>
-  <li><b>LICENSE</b>: Project's open-source license text</li>
-  <li><b>README.md</b>: Main documentation and onboarding guide</li>
-  <li><b>ROUTES_GUIDE.md</b>: Custom routes documentation</li>
-  <li><b>TranslationLink.md</b>: Instructions for translation collaboration</li>
-  <li><b>eslint.config.js</b>: ESLint configuration for code linting</li>
-  <li><b>index.html</b>: Main HTML entry point for frontend</li>
-  <li><b>package-lock.json</b>, <b>package.json</b>: NPM package configuration and dependency lockfiles</li>
-  <li><b>postcss.config.js</b>: PostCSS configuration file</li>
-  <li><b>tailwind.config.js</b>: Tailwind CSS configuration</li>
-  <li><b>vercel.json</b>: Vercel deployment configuration</li>
-  <li><b>vite.config.js</b>: Vite build and tooling configuration</li>
-</ul>
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
+## 🏗️ System Architecture
 
+HrRoadways follows a robust client-server architecture designed for high availability and multilingual accessibility.
 
-## Project Flowchart
-<img width="1125" height="760" alt="Untitled diagram-2025-10-11-075010" src="https://github.com/user-attachments/assets/5a406a55-d242-4b7f-9aec-de0b0194a896" />
+```mermaid
+graph TD
+    subgraph Client_Side [Frontend - Vite/React]
+        A[User Interface] --> B{i18next Engine}
+        B -->|Toggle| L1[English]
+        B -->|Toggle| L2[Hindi / 12+ Lang]
+        A --> C[Axios API Client]
+    end
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+    subgraph Server_Side [Backend - Node/Express]
+        C --> D[Express Server]
+        D --> E{API Routes}
+        E --> F[Smart Route Logic]
+        E --> G[Health Check]
+    end
+
+    subgraph Data_Layer [Storage & External]
+        F --> H[(State JSON DB)]
+        F --> I[Google Maps API]
+        F --> J[Places Repo]
+    end
+
+    style Client_Side fill:#e1f5fe,stroke:#01579b
+    style Server_Side fill:#e8f5e9,stroke:#2e7d32
+    style Data_Layer fill:#fff3e0,stroke:#ef6c00
+```
  
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+  
 ## ⚙️ Tech Stack
 
 <div align="center">
@@ -196,6 +179,30 @@ HrRoadways/
   
 <h2 align="center">⚡ For Developers</h2>
 
+### 🚀 Quick Start (Developer Mode)
+
+#### 1️⃣ Clone & Install
+```bash
+git clone https://github.com/NishantRana07/HrRoadways.git
+cd HrRoadways
+npm install
+```
+
+#### 2️⃣ Environment Setup
+Create a `.env` file in the root directory:
+```Code snippet
+PORT=50001
+GOOGLE_MAPS_API_KEY=your_key_here
+DB_PATH=./Databases/State_Database/Haryana.json
+```
+
+#### 3️⃣ Launch App
+```Bash
+# Start Backend & Frontend simultaneously
+npm run server  # Backend on 50001
+npm run dev     # Frontend on 5173
+```
+
 ### Internationalization (i18n)
 The project uses `react-i18next` for translations. Files are in `src/i18n/locales/`.  
 To add new translations:
@@ -254,95 +261,6 @@ To get a Google Maps API key:
 8. Copy the API key and add it to your `.env` file
 
 ---
-
-##  📁 HrRoadways – Full Project Structure
-
-<pre>
-HrRoadways/
-│
-├── .github/                                # GitHub configuration & workflows
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md                   # Template for reporting bugs
-│   │   ├── feature_request.md              # Template for feature requests
-│   │   └── general_issue.md                # General issue template
-│   │
-│   ├── workflows/
-│   │   ├── issue-create-automate-message.yml  # Auto message for issues
-│   │   └── pr-create-automate-message.yml     # Auto message for PRs
-│   │
-│   ├── PULL_REQUEST_TEMPLATE.md            # Pull request template
-│   ├── pull_request_template.md            # Duplicate/alternative PR template
-│   ├── image.png                           # Workflow or repo-related image
-│   └── image-1.png
-│
-├── .vscode/                                # VSCode configurations
-│   ├── launch.json
-│   └── settings.json
-│
-├── Backend/                                # Main backend folder
-│   ├── src/
-│   ├── .env.sample                         # Example environment file
-│   ├── package.json
-│   └── package-lock.json
-│
-├── Databases/                              # Databases and JSON data
-│   └── State_Database/
-│       └── Haryana.json
-│
-├── backend/                                # Backend routes & server files
-│   ├── routes/
-│   ├── libs/
-│   ├── public/
-│   ├── mainServer.js
-│   └── server.js
-│
-├── Places/                                 # Additional app data (e.g., maps)
-│
-├── assets/                                 # Assets (icons, images, etc.)
-│   └── icons/
-│
-├── techstack/                              # Tech stack-related info/resources
-│
-├── Buses.jpg                               # Static image asset
-├── _redirects                              # For routing (used in Vercel/Netlify)
-├── service-worker.js                       # PWA service worker file
-│
-├── src/                                    # Frontend source code
-│   ├── assets/
-│   ├── components/                         # Reusable UI components
-│   ├── contexts/                           # React contexts
-│   ├── data/                               # Static data files
-│   ├── hooks/                              # Custom React hooks
-│   ├── i18n/                               # Internationalization setup
-│   ├── services/                           # API and backend services
-│   ├── store/                              # State management (Redux/Zustand/etc.)
-│   ├── styles/                             # CSS/Tailwind/Global styles
-│   ├── utils/                              # Helper functions
-│   ├── App.jsx                             # Main React App component
-│   ├── index.css
-│   ├── main.jsx                            # Entry point
-│   └── translations.json                   # Language translations
-│
-├── .env                                    # Environment variables
-├── .gitignore                              # Git ignore rules
-│
-├── CLERK_SETUP.md                          # Clerk authentication setup
-├── CODE_OF_CONDUCT.md                      # Contributor behavior rules
-├── CONTRIBUTION_GUIDELINES.md              # How to contribute
-├── LICENSE                                 # Open-source license
-├── README.md                               # Project documentation
-├── ROUTES_GUIDE.md                         # API routes documentation
-├── TranslationLink.md                      # Translation related guide
-│
-├── eslint.config.js                        # ESLint configuration
-├── index.html                              # Root HTML file (Vite entry)
-├── package.json                            # Project dependencies and scripts
-├── package-lock.json                       # Dependency lock file
-├── postcss.config.js                       # PostCSS configuration
-├── tailwind.config.js                      # TailwindCSS configuration
-├── vercel.json                             # Vercel deployment settings
-└── vite.config.js                          # Vite configuration
-</pre>
 
 - Json Database hosting link - https://jsonblob.com/api/jsonBlob/1333092652136194048
 
@@ -507,8 +425,11 @@ git checkout -b your-branch-name
 
 #### 4. Make Your Changes:
 
-* Apply the Hindi translation logic.
-* Compress images before uploading.
+> [!IMPORTANT]
+> **Hindi Translation Rule:** Every new UI component must include logic for the `isHindi` state. PRs without corresponding Hindi translations in the `translations.json` will not be merged.
+
+> [!TIP]
+> **Image Optimization:** Always compress PNG/JPG assets before uploading to the `/assets` folder to maintain 100/100 Lighthouse performance.
 
 #### 5. Commit Your Changes:
 
